@@ -1,7 +1,7 @@
  # Flask React Project
 
 ### SCHEMA
-![image](https://user-images.githubusercontent.com/91810065/212436894-a98e5273-7cfe-4eda-ae7a-4d6c0d15ec9f.png)
+![image](./spotify8_database_schema.png)
 
 This is the starter for the Flask React project.
 
