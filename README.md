@@ -214,7 +214,7 @@ Live site: [Spotify8](https://spotify8-clone-941w.onrender.com/)<p>
   ```
   git branch
   ```
-* Create a branch with the naming convention <initials>-<small-description>
+* Create a branch with the naming convention `<initials>-<small-description>`
   ```
   git checkout -b ye-how-to-contribute
   ```
