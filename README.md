@@ -204,3 +204,5 @@ Live site: [Spotify8](https://spotify8-clone-941w.onrender.com/)<p>
 * As a logged in user, I want to  be able to continuously play tracks as I navigate the site.
 
 ### SCHEMA
+
+### Notes
