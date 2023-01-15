@@ -204,3 +204,19 @@ Live site: [Spotify8](https://spotify8-clone-941w.onrender.com/)<p>
 * As a logged in user, I want to  be able to continuously play tracks as I navigate the site.
 
 ### SCHEMA
+
+### How to contribute?
+* Clone the repo locally
+> git clone https://github.com/YElnadi/Flask_Project.git
+* CD to the created folder, you should be on the main branch
+> git brnch
+* Create a branch with the naming convention <initials>-<small-description>
+> git checkout -b ye-how-to-contribute
+* Push to remote
+> git push
+* If this is the first time to push, copy the generated command
+> git push --set-upstream origin ye-how-to-contribute
+* Got to github repo page, you will see the button `Create pull request`
+* In the page that opens, add a title and description to your change
+* At least 1 reviewer is required
+* Ask others in the team to review and approve your code
