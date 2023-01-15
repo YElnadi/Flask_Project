@@ -8,7 +8,10 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-import UploadPicture from './components/createImage';
+import UploadImages from './components/file_upload/UploadImages';
+import UploadSongs from './components/file_upload/UploadSongs';
+import ViewImages from './components/file_upload/ViewImages';
+import ViewSongs from './components/file_upload/ViewSongs';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -44,8 +47,17 @@ function App() {
         <Route path='/' exact={true} >
           <h1>My Home Page</h1>
         </Route>
-        <Route path='/s3-image-upload'>
-          <UploadPicture />
+        <Route path='/upload-image' exact={true}>
+          <UploadImages />
+        </Route>
+        <Route path='/upload-song' exact={true}>
+          <UploadSongs />
+        </Route>
+        <Route path='/songs' exact={true}>
+          <ViewSongs />
+        </Route>
+        <Route path='/images' exact={true}>
+          <ViewImages />
         </Route>
       </Switch>
     </BrowserRouter>
