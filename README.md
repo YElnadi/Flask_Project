@@ -207,24 +207,37 @@ Live site: [Spotify8](https://spotify8-clone-941w.onrender.com/)<p>
 
 ### How to contribute?
 * Clone the repo locally
-> git clone https://github.com/YElnadi/Flask_Project.git
+  ```
+  git clone https://github.com/YElnadi/Flask_Project.git
+  ```
 * CD to the created folder, you should be on the main branch
-> git brnch
+  ```
+  git branch
+  ```
 * Create a branch with the naming convention <initials>-<small-description>
-> git checkout -b ye-how-to-contribute
+  ```
+  git checkout -b ye-how-to-contribute
+  ```
 * Make your edits and commit your code
-> git add *
-> git commit -m "<some-description>"
+  ```
+  git add *
+  git commit -m "<some-description>"
+  ```
 * Push to remote
-> git push
+  ```
+  git push
+  ```
 * If this is the first time to push, copy the generated command
-> git push --set-upstream origin ye-how-to-contribute
+  ```
+  git push --set-upstream origin ye-how-to-contribute
+  ```
 * Go to github repo page, click on the shown button `Compare & pull request`
 * In the page that opens, add a title and description to your change
 * At least 1 reviewer is required
 * Ask others in the team to review and approve your code
 * Once approved, click on `Merge pull request` -- better `Squash and merge`
 * Once the PR is merged, other people can start pulling your changes using
-> git checkout main
-> git pull
-
+  ```
+  git checkout main
+  git pull
+  ```
