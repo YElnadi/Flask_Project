@@ -1,6 +1,8 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 
+
+
 class Playlist(db.Model):
     __tablename__='playlists'
 
@@ -20,11 +22,13 @@ class Playlist(db.Model):
 ##one to many relationship every user can create many playlists
     user = db.relationship("User", back_populates='playlist')
 
+    playlist_song = db.relationship('Playlist_song',back_populates='playlist', cascade="all, delete")
+
     def to_dict(self):
         return {
             'id':self.id,
             'title':self.title,
             'description':self.description,
-            'image_url':self.image_url,
-            'user':self.user.to_dict() ## need to check 
+            'playlist_img_url':self.playlist_img_url,
+            'user':self.user.to_dict() 
         }
