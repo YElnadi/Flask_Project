@@ -7,7 +7,7 @@ class Album(db.Model):
     name = db.Column(db.String)
     year = db.Column(db.Integer)
     album_image = db.Column(db.Text)
-    artist_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod(artists.id)))
+    ##artist_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod(artists.id)))
 
 
     def to_dict(self):
