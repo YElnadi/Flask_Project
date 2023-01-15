@@ -11,14 +11,14 @@ class Playlist(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     title = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
-    image_url = db.Column(db.Text, nullable=False)
+    playlist_img_url = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.Date, nullable=False)
     updated_at = db.Column(db.Date, nullable=False) 
 
 
 
 ##one to many relationship every user can create many playlists
-    user = db.relationship("User", back_populates='playlists')
+    user = db.relationship("User", back_populates='playlist')
 
     def to_dict(self):
         return {

@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     ##one to many relationship
-    playlists = db.relationships('Playlist', back_populates = "user", cascade="all, delete")
+    playlist = db.relationships('Playlist', back_populates = "user", cascade="all, delete")
 
     @property
     def password(self):

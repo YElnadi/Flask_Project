@@ -7,12 +7,12 @@ class Song(db.Model):
          __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255), nullable=False)
+    title = db.Column(db.String(255), nullable=False)
     #user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    song_url = db.Column(db.String)
     album_id = db.Column(db.String)
-    artist_id = db.Column(db.String, db.ForeignKey(add_prefix_for_prod('albums.id')))
-    ## maybe song length
+    song_url = db.Column(db.Text)
+   
+    
 
     ##relationship 
     album = db.relationship('Album', back_populates='songs')
@@ -23,6 +23,10 @@ class Song(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
-            # "username": self.user.id,
-            "url": self.url,
+            #"username": self.user.id,
+            "title":self.title,
+            "album_id":self.album_id,
+            "track_id":self.track_id
+
+            
         }
