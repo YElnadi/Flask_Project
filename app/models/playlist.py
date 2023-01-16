@@ -3,8 +3,8 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 playlist_songs = db.Table(
     'playlist-songs',
     db.Model.metadata,
-    db.Column('playlist_id', db.Integer, db.ForeignKey(add_prefix_for_prod("playlists.id"))),
-    db.Column('song_id', db.Integer, db.ForeignKey(add_prefix_for_prod("songs.id")))
+    db.Column('playlist_id', db.Integer, db.ForeignKey(add_prefix_for_prod("playlists.id")), primary_key=True),
+    db.Column('song_id', db.Integer, db.ForeignKey(add_prefix_for_prod("songs.id")),primary_key=True)
 )
 
 if environment == "production":
@@ -30,8 +30,11 @@ class Playlist(db.Model):
 
 ##one to many relationship every user can create many playlists
     user = db.relationship("User", back_populates='playlist')
-
-    playlist_song = db.relationship('Playlist_song',back_populates='playlist', cascade="all, delete")
+    songs = db.relationship(
+        "Song",
+        secondary=playlist_songs,
+        back_populates="playlists"
+    )
 
     def to_dict(self):
         return {
