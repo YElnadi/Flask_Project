@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .playlist import playlist_songs
 
 class Song(db.Model):
     __tablename__ = "songs"
@@ -17,7 +18,11 @@ class Song(db.Model):
     ##relationship 
     album = db.relationship('Album', back_populates='song')
 
-    playlist_song = db.relationship('Playlist_song', back_populates='song', cascade ="all, delete")
+    playlists = db.relationship(
+        "Playlist",
+        secondary=playlist_songs, 
+        back_populates="songs"
+    )
 
     # user = db.relationship("User", back_populates="images")
 
