@@ -12,6 +12,7 @@ import UploadImages from './components/file_upload/UploadImages';
 import UploadSongs from './components/file_upload/UploadSongs';
 import ViewImages from './components/file_upload/ViewImages';
 import ViewSongs from './components/file_upload/ViewSongs';
+import HomePage from './components/HomePage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -46,6 +47,7 @@ function App() {
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <h1>My Home Page</h1>
+          <HomePage />
         </Route>
         <Route path='/upload-image' exact={true}>
           <UploadImages />
