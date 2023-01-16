@@ -47,7 +47,7 @@ def upgrade():
     op.add_column('songs', sa.Column('album_id', sa.String(), nullable=True))
     op.add_column('songs', sa.Column('song_url', sa.Text(), nullable=True))
     op.create_foreign_key(None, 'songs', 'albums', ['album_id'], ['id'])
-    op.drop_column('songs', 'url')
+    # op.drop_column('songs', 'url')
     # ### end Alembic commands ###
 
 
