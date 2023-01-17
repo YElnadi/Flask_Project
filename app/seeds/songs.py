@@ -32,12 +32,15 @@ def seed_songs():
 
     )
 
+
     db.session.add(demo_song1)
     db.session.add(demo_song2)
     db.session.add(demo_song3)
     db.session.add(demo_song4)
     db.session.add(demo_song5)
     db.session.commit()
+    songs = [demo_song1, demo_song2, demo_song3, demo_song4, demo_song5]
+    return songs 
 
 def undo_songs():
     if environment == "production":

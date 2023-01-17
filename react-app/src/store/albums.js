@@ -3,7 +3,7 @@ const LOAD_ALBUMS = "albums/LOAD_ALBUMS";
 // ACTION CREATOR
 const loadAlbums = (albums) => ({
   type: LOAD_ALBUMS,
-  albums: albums.albums,
+  albums,
 });
 
 // THUNK
@@ -16,7 +16,7 @@ export const loadAlbumsThunk = () => async (dispatch) => {
       return;
     }
 
-    dispatch(loadAlbums(data));
+    dispatch(loadAlbums(data.albums));
   }
 };
 // INITIAL STATE

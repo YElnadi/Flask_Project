@@ -1,13 +1,13 @@
-import { NavLink, useHistory, Route, Switch } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import "./HomePage.css";
 
-const SpotCards = ({ title, image_url, maker, id, description }) => {
+
+const SingleAlbumDetail = ({ title, image_url, maker, id }) => {
   const history = useHistory();
 
-  // const openCard = (e) => {
-  //   history.push(`/albums/${album.id}`);
-  // };
+  const openCard = (e) => {
+    history.push(`/albums/${album.id}`);
+  };
 
   return (
     <>
@@ -16,14 +16,10 @@ const SpotCards = ({ title, image_url, maker, id, description }) => {
           <img
             style={{ width: 200, height: 200 }}
             src={image_url}
-            // onClick={openCard}
+            onClick={openCard}
           ></img>
         </div>
         <div className="card-title">{title}</div>
-
-        {description !== undefined && (
-          <div className="card-playlist-description">{description}</div>
-        )}
         <div className="card-maker">{maker}</div>
       </div>
     </>

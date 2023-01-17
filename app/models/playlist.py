@@ -43,5 +43,5 @@ class Playlist(db.Model):
             'title':self.title,
             'description':self.description,
             'playlist_img_url':self.playlist_img_url,
-            'user':self.user.to_dict() 
+            'user':self.user.username
         }
