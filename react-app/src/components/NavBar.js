@@ -1,9 +1,15 @@
 
-import React from 'react';
+import React, {useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 
+
+
 const NavBar = () => {
+  const user = useSelector(state=>state.session.user)
+  const dispatch = useDispatch()
+
   return (
     <>
       <div className='top-nav-bar'>
@@ -28,7 +34,9 @@ const NavBar = () => {
           </NavLink>
         </p>
         <p>
-          <LogoutButton />
+          {user !== null && 
+            <LogoutButton />
+          }
         </p>
       </div>
     </>
