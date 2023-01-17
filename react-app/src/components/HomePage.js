@@ -17,7 +17,7 @@ const HomePage = () => {
   return (
     <>
       <div>
-        <h1>SPOTIFY CLONE</h1>
+        <h1>Spotify Albums</h1>
         {Object.values(allAlbums).map(album => (
           <SpotCards key={album} title={album.title} maker={album.artist} image_url={album.album_img_url} id={album.id}/>
           // <div key={album}>

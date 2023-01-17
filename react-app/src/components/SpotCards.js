@@ -1,5 +1,6 @@
 import { NavLink, useHistory, Route, Switch } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import './HomePage.css'
 
 const SpotCards = ({ title, image_url, maker, id }) =>{
     const history = useHistory()

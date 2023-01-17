@@ -1,1 +1,12 @@
 /* TODO Add site wide styles */
+#root{
+    background-color:#191414 ;
+    color:whitesmoke;
+    display:flex;
+    flex-direction: column;
+}
+
+.top-nav-bar{
+    display:'flex';
+    flex-direction:'row'
+}
