@@ -33,8 +33,11 @@ const SingleAlbumDetail = () => {
       <p>{album.title}</p>
     </div>
     <div>
-      <p>{getSongs(album).length}</p>
-      <p>{getSongs(album).map(song=>song.title)}</p>
+      {getSongs(album).length}
+      
+    </div>
+    <div style={{whiteSpace:'pre-line'}}>
+      {getSongs(album).map(song=>song.title).join("\n")}
     </div>
     </>
   );

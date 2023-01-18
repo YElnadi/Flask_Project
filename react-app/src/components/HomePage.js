@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { loadAlbumsThunk } from "../store/albums";
 import { loadPlaylistThunk } from "../store/playlists";
 import SpotCards from "./SpotCards";
+import SinglePlaylistCard from "./SinglePlaylistCard";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -37,13 +38,13 @@ const HomePage = () => {
         <h1>Spotify Playlist</h1>
 
         {Object.values(allPlaylists).map((playlist) => (
-          <SpotCards
-            key={playlist.id}
-            title={playlist.title}
-            description={playlist.description}
-            maker={playlist.user}
-            image_url={playlist.playlist_img_url}
-            id={playlist.id}
+          <SinglePlaylistCard playlist={playlist} key={playlist.id}
+            // key={playlist.id}
+            // title={playlist.title}
+            // description={playlist.description}
+            // maker={playlist.user}
+            // image_url={playlist.playlist_img_url}
+            // id={playlist.id}
           />
           // <div key={album}>
           //   <p>{album.title}</p>

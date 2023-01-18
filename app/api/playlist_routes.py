@@ -5,6 +5,8 @@ from ..forms.playlist_form import PlaylistForm
 
 playlist_routes = Blueprint('playlists', __name__)
 
+
+##get all playlists
 @playlist_routes.route('/')
 def playlists():
     playlists = Playlist.query.all()
@@ -12,12 +14,14 @@ def playlists():
         'playlists': [playlist.to_dict() for playlist in playlists]
     }
 
+##get one playlist by id
 @playlist_routes.route('/<int:playlist_id>')
 def get_one_playlist(playlist_id):
     playlist = Playlist.query.get(playlist_id)
-    return {
-        'single-playlist': playlist.to_dict()
-    }
+    if not playlist:
+      return {"errors": "playlist not found"}, 404
+    return playlist.to_dict()
+    
 
 
 @playlist_routes.route('/form', methods=['GET', 'POST'])

@@ -43,5 +43,6 @@ class Playlist(db.Model):
             'title':self.title,
             'description':self.description,
             'playlist_img_url':self.playlist_img_url,
-            'user':self.user.username
+            'user':self.user.username,
+            'songs':[song.to_dict() for song in self.songs]
         }
