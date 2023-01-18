@@ -67,5 +67,21 @@ def update_playlist(playlist_id):
 
 
 
+# DELETE: playlist/:playlistId    
+@playlist_routes.route("/<int:id>", methods=["DELETE"])
+@login_required
+def delete_playlist(id):
+    playlist = Playlist.query.get(id)
+    if playlist:
+        if playlist.user_id == current_user.id:
+            db.session.delete(playlist)
+            db.session.commit()
+            return {"message": "Playlist successfully deleted"}
+        else:
+            return {"message": "Cannot delete playlist not owned by you!"}
+    else:
+        return {"message": f"No project found with id of {id}"}
+    
+
     
     

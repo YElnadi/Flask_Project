@@ -41,3 +41,20 @@ def upload_song():
 def get_all_songs():
     songs = Song.query.order_by(Song.id.desc()).all()
     return {"songs": [song.to_dict() for song in songs]}
+
+
+
+# DELETE: song/:songId
+@song_routes.route("/<int:id>", methods=["DELETE"])
+@login_required
+def delete_song(id):
+    song = Song.query.get(id)
+    if song:
+        if song.user_id == current_user.id:
+            db.session.delete(song)
+            db.session.commit()
+            return {"message": "Song successfully deleted"}
+        else:
+            return {"message": "Cannot delete song not owned by you!"}
+    else:
+        return {"message": f"No project found with id of {id}"}
