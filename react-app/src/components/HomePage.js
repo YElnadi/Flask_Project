@@ -22,7 +22,7 @@ const HomePage = () => {
         <h1>Spotify Albums</h1>
         {Object.values(allAlbums).map((album) => (
           <SpotCards
-            key={album}
+            key={album.id}
             title={album.title}
             maker={album.artist}
             image_url={album.album_img_url}
@@ -38,7 +38,7 @@ const HomePage = () => {
 
         {Object.values(allPlaylists).map((playlist) => (
           <SpotCards
-            key={playlist}
+            key={playlist.id}
             title={playlist.title}
             description={playlist.description}
             maker={playlist.user}
