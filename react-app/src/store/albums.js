@@ -16,14 +16,9 @@ const getOneAlbum = album =>({
 // THUNK
 export const loadAlbumsThunk = () => async (dispatch) => {
   const response = await fetch("/api/albums/");
-
   if (response.ok) {
     const data = await response.json();
-    if (data.errors) {
-      return;
-    }
-
-    dispatch(loadAlbums(data.albums));
+    await dispatch(loadAlbums(data.albums));
   }
 };
 

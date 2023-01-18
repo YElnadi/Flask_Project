@@ -36,17 +36,6 @@ const SingleAlbumDetail = () => {
       <p>{getSongs(album).length}</p>
       <p>{getSongs(album).map(song=>song.title)}</p>
     </div>
-      {/* <div className="card-container">
-        <div className="image-container">
-          <img
-            style={{ width: 200, height: 200 }}
-            src={image_url}
-            onClick={openCard}
-          ></img>
-        </div>
-        <div className="card-title">{title}</div>
-        <div className="card-maker">{maker}</div>
-      </div> */}
     </>
   );
 };

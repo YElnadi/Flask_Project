@@ -3,10 +3,12 @@ from app.models import Album
 
 album_routes = Blueprint('albums', __name__)
 
+##get all albums
 @album_routes.route('/')
 def albums():
     albums = Album.query.all()
-    return [album.to_dict() for album in albums]
+    print('getallalbums', albums)
+    return {"albums":[album.to_dict() for album in albums]}
     
 
 ##get single album by id

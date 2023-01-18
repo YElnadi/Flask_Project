@@ -8,6 +8,7 @@ import SpotCards from "./SpotCards";
 const HomePage = () => {
   const dispatch = useDispatch();
   const allAlbums = useSelector((state) => state.albums.allAlbums);
+  console.log('#####allAlbums:', allAlbums)
   const allPlaylists = useSelector((state) => state.playlists.allPlaylists);
 
   useEffect(async () => {
