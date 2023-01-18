@@ -16,6 +16,7 @@ import HomePage from './components/HomePage';
 import SingleAlbumDetail from './components/SingleAlbumDetail'
 import SinglePlaylistDetails from './components/SinglePlaylistDetails';
 import CreatePlaylist from './components/CreatePlaylist';
+import EditPlaylistForm from './components/EditPlaylistForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -65,6 +66,9 @@ function App() {
         </Route>
         <Route path='/albums/:albumId' exact={true}>
           <SingleAlbumDetail />
+        </Route>
+        <Route path='/playlists/:playlistId/edit' exact={true}>
+          <EditPlaylistForm />
         </Route>
         <Route path='/playlists/:playlistId' exact={true}>
           <SinglePlaylistDetails />

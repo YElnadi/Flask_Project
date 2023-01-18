@@ -5,26 +5,30 @@ import { getOnePlaylistThunk } from "../store/playlists";
 
 const SinglePlaylistDetails = () => {
   const { playlistId } = useParams();
-  console.log("#####playlistId:", playlistId);
+  // console.log("#####playlistId:", playlistId);
   const dispatch = useDispatch();
   const history = useHistory();
   const playlist = useSelector((state) => state.playlists.singlePlaylist);
-  console.log("####playlist", playlist)
+  // console.log("####playlist", playlist)
 
   const getSongs = (playlist) => {
     const songs = playlist.songs !== undefined ? playlist.songs : []
     return Object.values(songs)
   }
+  const submit = (e) => {
+    e.preventDefault();
+    history.push(`/playlists/${playlistId}/edit`)
+  }
 
-  
 
-  useEffect(async()=>{
-    await dispatch(getOnePlaylistThunk(playlistId))
+  useEffect(()=>{
+    dispatch(getOnePlaylistThunk(playlistId))
   },[dispatch, playlistId])
 
   return (
       <>
       <p>Your are in playlist</p>
+      <button className="edit-playlist" onClick={submit}>Edit Playlist</button>
       <div>
       <img src={playlist.playlist_img_url} style={{ width: 200, height: 200 }}/>
     </div>
@@ -41,7 +45,7 @@ const SinglePlaylistDetails = () => {
     {getSongs(playlist).map(song=>song.title).join("\n")}
     </div>
       </>
-    
+
   )
 };
 
