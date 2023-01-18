@@ -3,7 +3,7 @@ import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
-
+import Search from './search/search';
 
 
 const NavBar = () => {
@@ -26,6 +26,11 @@ const NavBar = () => {
         <p>
           <NavLink to='/' exact={true} activeClassName='active'>
             Home
+          </NavLink>
+        </p>
+        <p>
+          <NavLink to='/search' exact={true} activeClassName='active'>
+            Search
           </NavLink>
         </p>
         <p>

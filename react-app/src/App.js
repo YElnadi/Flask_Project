@@ -13,6 +13,7 @@ import UploadSongs from './components/file_upload/UploadSongs';
 import ViewImages from './components/file_upload/ViewImages';
 import ViewSongs from './components/file_upload/ViewSongs';
 import HomePage from './components/HomePage';
+import Search from './components/search/search';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -59,6 +60,9 @@ function App() {
         </Route>
         <Route path='/images' exact={true}>
           <ViewImages />
+        </Route>
+        <Route path='/search' exact={true}>
+          <Search />
         </Route>
       </Switch>
     </BrowserRouter>

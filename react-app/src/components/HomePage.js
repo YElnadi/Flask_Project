@@ -3,7 +3,8 @@ import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { loadAlbumsThunk } from "../store/albums";
 import { loadPlaylistThunk } from "../store/playlists";
-import SpotCards from "./SpotCards";
+import AlbumCard from "./AlbumCard";
+import PlaylistCard from "./PlaylistCard";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -20,10 +21,11 @@ const HomePage = () => {
       <div>
         <h1>Spotify Albums</h1>
         {Object.values(allAlbums).map((album) => (
-          <SpotCards
+          <AlbumCard
             key={album}
             title={album.title}
             maker={album.artist}
+            album={album}
             image_url={album.album_img_url}
             id={album.id}
           />
@@ -36,11 +38,12 @@ const HomePage = () => {
         <h1>Spotify Playlist</h1>
 
         {Object.values(allPlaylists).map((playlist) => (
-          <SpotCards
+          <PlaylistCard
             key={playlist}
             title={playlist.title}
             description={playlist.description}
             maker={playlist.user}
+            playlist={playlist}
             image_url={playlist.playlist_img_url}
             id={playlist.id}
           />
