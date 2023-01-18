@@ -6,6 +6,6 @@ from app.models import Playlist
 class PlaylistForm(FlaskForm):
   title = StringField('Title', validators=[DataRequired()])
   user_id = IntegerField('User ID', validators=[DataRequired()])
-  description = TextField('Description', validators=[DataRequired()])
-  playlist_img_url = TextField('Playlist Image URL', validators=[DataRequired()])
+  description = TextField('Description')
+  playlist_img_url = TextField('Playlist Image URL')
   submit = SubmitField('Save')

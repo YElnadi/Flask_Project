@@ -3,13 +3,15 @@ from app.models import Album, Song
 
 album_routes = Blueprint('albums', __name__)
 
+##get all albums
 @album_routes.route('/')
 def albums():
     albums = Album.query.all()
-    return {
-        'albums': [album.to_dict() for album in albums]
-    }
+    #print('getallalbums', albums)
+    return {"albums":[album.to_dict() for album in albums]}
 
+
+##get single album by id
 @album_routes.route('/<int:album_id>')
 def get_one_album(album_id):
     album = Album.query.get(album_id)
@@ -26,4 +28,3 @@ def one_album_songs(album_id):
     songs = Song.query.filter(Song.album_id == album_id).all()
     album['songs'] = [song.to_dict() for song in songs]
     return album
-  
