@@ -13,6 +13,7 @@ import UploadSongs from './components/file_upload/UploadSongs';
 import ViewImages from './components/file_upload/ViewImages';
 import ViewSongs from './components/file_upload/ViewSongs';
 import HomePage from './components/HomePage';
+import SingleAlbumDetail from './components/SingleAlbumDetail'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -59,6 +60,9 @@ function App() {
         </Route>
         <Route path='/images' exact={true}>
           <ViewImages />
+        </Route>
+        <Route path='/albums/:albumId' exact={true}>
+          <SingleAlbumDetail />
         </Route>
       </Switch>
     </BrowserRouter>

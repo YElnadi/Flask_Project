@@ -5,9 +5,9 @@ import "./HomePage.css";
 const SpotCards = ({ title, image_url, maker, id, description }) => {
   const history = useHistory();
 
-  // const openCard = (e) => {
-  //   history.push(`/albums/${album.id}`);
-  // };
+  const openCard = (e) => {
+    history.push(`/albums/${id}`);
+  };
 
   return (
     <>
@@ -16,7 +16,7 @@ const SpotCards = ({ title, image_url, maker, id, description }) => {
           <img
             style={{ width: 200, height: 200 }}
             src={image_url}
-            // onClick={openCard}
+            onClick={openCard}
           ></img>
         </div>
         <div className="card-title">{title}</div>
