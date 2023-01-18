@@ -3,12 +3,18 @@ import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
+import {createNewPlaylistThunk} from '../store/playlists'
+import CreatePlaylist from './CreatePlaylist';
 
 
 
 const NavBar = () => {
   const user = useSelector(state=>state.session.user)
   const dispatch = useDispatch()
+
+  const createPlaylist = async()=>{
+    await dispatch(createNewPlaylistThunk())
+  }
 
   return (
     <>
@@ -32,6 +38,16 @@ const NavBar = () => {
           <NavLink to='/users' exact={true} activeClassName='active'>
             Users
           </NavLink>
+        </p>
+        <p>
+          <NavLink to='/search' exact={true} activeClassName='active'>
+            Search
+          </NavLink>
+        </p>
+        <p>
+        <NavLink to='/playlists/'  exact={true} activeClassName='active'>
+          Create Playlist 
+        </NavLink>
         </p>
         <p>
           {user !== null && 

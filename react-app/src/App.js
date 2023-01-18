@@ -15,7 +15,7 @@ import ViewSongs from './components/file_upload/ViewSongs';
 import HomePage from './components/HomePage';
 import SingleAlbumDetail from './components/SingleAlbumDetail'
 import SinglePlaylistDetails from './components/SinglePlaylistDetails';
-import SinglePlaylistCard from './components/SinglePlaylistCard';
+import CreatePlaylist from './components/CreatePlaylist';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -68,6 +68,9 @@ function App() {
         </Route>
         <Route path='/playlists/:playlistId' exact={true}>
           <SinglePlaylistDetails />
+        </Route>
+        <Route path='/playlists/' exact={true}>
+          <CreatePlaylist />
         </Route>
       </Switch>
     </BrowserRouter>

@@ -6,7 +6,7 @@ from ..forms.playlist_form import PlaylistForm
 playlist_routes = Blueprint('playlists', __name__)
 
 
-##get all playlists
+# get all playlists
 @playlist_routes.route('/')
 def playlists():
     playlists = Playlist.query.all()
@@ -14,37 +14,43 @@ def playlists():
         'playlists': [playlist.to_dict() for playlist in playlists]
     }
 
-##get one playlist by id
+# get one playlist by id
+
+
 @playlist_routes.route('/<int:playlist_id>')
 def get_one_playlist(playlist_id):
     playlist = Playlist.query.get(playlist_id)
     if not playlist:
       return {"errors": "playlist not found"}, 404
     return playlist.to_dict()
-    
 
 
-@playlist_routes.route('/form', methods=['GET', 'POST'])
+# create a new playlist
+@playlist_routes.route('/', methods=['POST'])
 # @login_required
-def new_playlist(): 
+def new_playlist():
 
     form = PlaylistForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     # form.data["user_id"] = user_id
 
-    if form.validate_on_submit(): 
-      new_playlist = Playlist(
-        title=form.data['title'], 
-        user_id=form.data['user_id'],
-        description=form.data['description'],
-        playlist_img_url=form.data['playlist_img_url']
-      )
+    if form.validate_on_submit():
+      new_playlist = Playlist()
+      form.populate_obj(new_playlist)
+      new_playlist.playlist_img_url = form.data['playlist_img_url'] if form.data['playlist_img_url'] else '/static/images/unknown-image-music.jpeg'
+
+      # new_playlist = Playlist(
+      #   title=form.data['title'],
+      #   user_id=form.data['user_id'],
+      #   description=form.data['description'],
+      #   playlist_img_url=form.data['playlist_img_url']
+      # )
       db.session.add(new_playlist)
       db.session.commit()
-    #   return new_playlist.to_dict()
-    # else: 
-    #   return form.errors 
-    return render_template('playlist_form.html', form=form)
+      return new_playlist.to_dict()
+    else: 
+      return form.errors 
+    #return render_template('playlist_form.html', form=form)
 
 
 
