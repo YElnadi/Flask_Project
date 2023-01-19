@@ -19,7 +19,7 @@ import CreatePlaylist from "./components/CreatePlaylist";
 import EditPlaylistForm from "./components/EditPlaylistForm";
 import Search from "./components/search/search";
 import AudioPlayer from "./components/ContinuousPlayer";
-import Player from "./components/ContinuousPlayer"; 
+import Player from "./components/ContinuousPlayer";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
