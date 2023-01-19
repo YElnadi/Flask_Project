@@ -2,20 +2,24 @@ import { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getOneAlbumThunk } from "../store/albums";
+import { deleteAlbumThunk } from "../store/albums";
 
 const SingleAlbumDetail = () => {
   const { albumId } = useParams();
-  console.log("$$$$$$$albumId:", albumId);
   const dispatch = useDispatch();
   const history = useHistory();
   const album = useSelector((state) => state.albums.singleAlbum);
+  const user = useSelector((state) => state.session.user);
 
   const getSongs = (album) => {
     const songs = album.songs !== undefined ? album.songs : [];
     return Object.values(songs);
   };
 
-  console.log("$$$$$$album:", album);
+  const deleteAlbum = (e) => {
+    e.preventDefault();
+    return dispatch(deleteAlbumThunk(album.id)).then(history.push("/"));
+  };
 
   useEffect(async () => {
     await dispatch(getOneAlbumThunk(albumId));
@@ -26,6 +30,13 @@ const SingleAlbumDetail = () => {
       <h1>You are in the album</h1>
       <div>
         <img src={album.album_img_url} style={{ width: 200, height: 200 }} />
+      </div>
+      <div>
+        {user && album && user.id === album.owner_id && (
+          <button className="delete-album" onClick={deleteAlbum}>
+            Delete
+          </button>
+        )}
       </div>
       <div>
         <p>{album.title}</p>

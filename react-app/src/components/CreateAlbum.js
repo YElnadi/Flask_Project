@@ -23,6 +23,7 @@ const CreateAlbum = () => {
       title: title,
       album_img_url: album_img_url,
       artist: user.username,
+      owner_id: user.id
     };
 
     return dispatch(createNewAlbumThunk(newAlbum)).then((album) => {

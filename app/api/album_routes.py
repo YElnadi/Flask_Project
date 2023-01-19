@@ -40,24 +40,16 @@ def new_album():
     form = AlbumForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     # form.data["user_id"] = user_id
-
     if form.validate_on_submit():
       new_Album = Album()
       form.populate_obj(new_Album)
       new_Album.album_img_url = form.data['album_img_url'] if form.data['album_img_url'] else '/static/images/unknown-album-cover.jpeg'
-
-      # new_playlist = Playlist(
-      #   title=form.data['title'],
-      #   user_id=form.data['user_id'],
-      #   description=form.data['description'],
-      #   playlist_img_url=form.data['playlist_img_url']
-      # )
+      
       db.session.add(new_Album)
       db.session.commit()
       return new_Album.to_dict()
     else: 
       return form.errors 
-    #return render_template('playlist_form.html', form=form)
 
 
 

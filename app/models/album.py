@@ -11,6 +11,7 @@ class Album(db.Model):
     title = db.Column(db.String)
     album_img_url = db.Column(db.Text)
     artist = db.Column(db.String(255))
+    owner_id = db.Column(db.Integer, nullable=True)
     
 
     ##relationship
@@ -23,6 +24,7 @@ class Album(db.Model):
             'title':self.title,
             'album_img_url':self.album_img_url,
             'artist':self.artist,
+            'owner_id':self.owner_id,
             'songs':[song.to_dict() for song in self.songs]
         }
         return album 
