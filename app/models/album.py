@@ -18,10 +18,11 @@ class Album(db.Model):
 
 
     def to_dict(self):
-        return{
+        album = {
             'id':self.id,
             'title':self.title,
             'album_img_url':self.album_img_url,
             'artist':self.artist,
             'songs':[song.to_dict() for song in self.songs]
         }
+        return album 

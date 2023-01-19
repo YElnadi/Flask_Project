@@ -8,4 +8,4 @@ class PlaylistForm(FlaskForm):
   user_id = IntegerField('User ID', validators=[DataRequired()])
   description = TextField('Description')
   playlist_img_url = TextField('Playlist Image URL')
-  submit = SubmitField('Save')
+  submit = SubmitField('Submit')

@@ -1,5 +1,6 @@
 const LOAD_ALBUMS = "albums/LOAD_ALBUMS";
 const GET_ONE_ALBUM = "albums/GET_ONE_ALBUM";
+const CREATE_ALBUM = "album/CREATE_ALBUM";
 
 // ACTION CREATOR
 const loadAlbums = (albums) => ({
@@ -10,6 +11,11 @@ const loadAlbums = (albums) => ({
 const getOneAlbum = (album) => ({
   type: GET_ONE_ALBUM,
   album,
+});
+
+const createNewAlbum = (newAlbum) => ({
+  type: CREATE_ALBUM,
+  newAlbum,
 });
 
 // THUNK
@@ -27,6 +33,21 @@ export const getOneAlbumThunk = (id) => async (dispatch) => {
     const oneAlbum = await response.json();
     dispatch(getOneAlbum(oneAlbum));
     return oneAlbum;
+  }
+};
+
+export const createNewAlbumThunk = (newAlbum) => async (dispatch) => {
+  const response = await fetch(`/api/albums/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newAlbum),
+  });
+  if (response.ok) {
+    const newCreatedAlbum = await response.json();
+    dispatch(createNewAlbum(newCreatedAlbum));
+    return newCreatedAlbum;
   }
 };
 
@@ -48,6 +69,14 @@ export default function reducer(state = initialState, action) {
         allAlbums: { ...state.allAlbums },
         singleAlbum: action.album,
       };
+      return newState;
+    }
+    case CREATE_ALBUM: {
+      const newState = {
+        ...state,
+        allAlbums: { ...state.allAlbums },
+      };
+      newState.allAlbums[action.newAlbum.id] = action.newAlbum;
       return newState;
     }
     default:

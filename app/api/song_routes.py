@@ -9,7 +9,7 @@ song_routes = Blueprint("songs", __name__)
 
 @song_routes.route("", methods=["POST"])
 # @login_required
-def upload_song():
+def upload_song(album_id, title):
     if "song" not in request.files:
         return {"errors": "song required"}, 400
 
@@ -31,7 +31,11 @@ def upload_song():
     url = upload["url"]
     # flask_login allows us to get the current user from the request
     # new_image = Image(user=current_user, url=url)
-    new_song = Song(url=url)
+    new_song = Song(
+      song_url=url, 
+      title=title, 
+      album_id=album_id
+      )
     db.session.add(new_song)
     db.session.commit()
     return {"url": url}
