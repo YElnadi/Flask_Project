@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
 // import {createNewPlaylistThunk} from '../store/playlists'
 import CreatePlaylist from "./CreatePlaylist";
-import Search from "./search/search";
+import CreateAlbum from "./CreateAlbum";
 
 const NavBar = () => {
   const user = useSelector((state) => state.session.user);
@@ -34,13 +34,13 @@ const NavBar = () => {
         </p>
         <p>
           <NavLink to="/users" exact={true} activeClassName="active">
-            Users
+            User
           </NavLink>
         </p>
 
-        {/* <p> */}
-        {user && <CreatePlaylist />}
-        {/* </p> */}
+        {(user && <CreatePlaylist />)} 
+        {(user && <CreateAlbum />)}
+
         <p>{user !== null && <LogoutButton />}</p>
       </div>
     </>

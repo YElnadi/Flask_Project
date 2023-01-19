@@ -16,6 +16,7 @@ class User(db.Model, UserMixin):
 
     ##one to many relationship
     playlist = db.relationship('Playlist', back_populates = "user", cascade="all, delete")
+    album = db.relationship('Album', back_populates = "user", cascade="all, delete")
 
     @property
     def password(self):

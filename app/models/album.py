@@ -14,6 +14,7 @@ class Album(db.Model):
     
 
     ##relationship
+    user = db.relationship("User", back_populates='album')
     songs = db.relationship('Song',back_populates='album', cascade = 'all, delete' )
 
 
