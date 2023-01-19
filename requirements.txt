@@ -24,7 +24,6 @@ markupsafe==2.0.1
 python-dateutil==2.8.1
 python-dotenv==0.14.0
 python-editor==1.0.4
-react-h5-audio-player==3.8.6
 six==1.15.0
 sqlalchemy==1.4.19
 werkzeug==2.0.1

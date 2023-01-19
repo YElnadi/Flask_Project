@@ -10,7 +10,7 @@ class Song(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), nullable=False)
     #user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    album_id = db.Column(db.String, db.ForeignKey(add_prefix_for_prod("albums.id")))
+    album_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("albums.id")))
     song_url = db.Column(db.Text)
    
     
@@ -31,7 +31,7 @@ class Song(db.Model):
             "id": self.id,
             #"username": self.user.id,
             "title":self.title,
-            #"album_id":self.album_id,
+            "album_id":self.album_id,
             "song_url":self.song_url
 
             
