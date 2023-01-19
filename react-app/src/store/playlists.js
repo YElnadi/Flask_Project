@@ -72,6 +72,7 @@ export const createNewPlaylistThunk = (newPlaylist) => async (dispatch) => {
 
 // main Reducer
 const initialState = { allPlaylists: {}, singlePlaylist: {} };
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_PLAYLISTS: {

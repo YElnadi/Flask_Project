@@ -12,25 +12,21 @@ const CreateAlbum = () => {
 
   const user = useSelector((state) => state.session.user);
 
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [title, setTitle] = useState("My Album # ");
   const [album_img_url, setAlbumImgUrl] = useState(
-    "https://spotify8bucket.s3.amazonaws.com/9112b72eeb314f0c9aa8670f9f32064c.jpeg"
+    "https://emby.media/community/uploads/inline/355992/5c1cc71abf1ee_genericcoverart.jpg"
   );
-  const [artist, setArtist] = useState("");
-
-  //   useEffect(async()=>{
-  //       await dispatch(createNewPlaylistThunk())
-  //   }, [dispatch])
 
   const submit = async (e) => {
     e.preventDefault();
     const newAlbum = {
       title: title,
       album_img_url: album_img_url,
-      artist: artist,
+      artist: user.username,
     };
+
     return dispatch(createNewAlbumThunk(newAlbum)).then((album) => {
+      console.log("----------------- \n", album);
       const { id } = album;
       history.push(`/albums/${id}`);
     });
@@ -38,9 +34,11 @@ const CreateAlbum = () => {
 
   return (
     <>
-      <div id="create-album" onClick={submit}>
-        Create Album
-      </div>
+      {user && (
+        <div id="create-album" onClick={submit}>
+          Create Album
+        </div>
+      )}
     </>
   );
 };

@@ -31,6 +31,7 @@ const CreatePlaylist = () => {
       user_id: user.id,
     };
     return dispatch(createNewPlaylistThunk(newPlaylist)).then((playlist) => {
+      console.log("----------------- \n", playlist);
       const { id } = playlist;
       history.push(`/playlists/${id}`);
     });
