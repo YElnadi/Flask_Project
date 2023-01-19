@@ -1,5 +1,5 @@
 const LOAD_ALBUMS = "albums/LOAD_ALBUMS";
-const GET_ONE_ALBUM = "albums/GET_ONE_ALBUM"
+const GET_ONE_ALBUM = "albums/GET_ONE_ALBUM";
 
 // ACTION CREATOR
 const loadAlbums = (albums) => ({
@@ -7,11 +7,10 @@ const loadAlbums = (albums) => ({
   albums,
 });
 
-
-const getOneAlbum = album =>({
-  type:GET_ONE_ALBUM,
-  album
-})
+const getOneAlbum = (album) => ({
+  type: GET_ONE_ALBUM,
+  album,
+});
 
 // THUNK
 export const loadAlbumsThunk = () => async (dispatch) => {
@@ -22,41 +21,35 @@ export const loadAlbumsThunk = () => async (dispatch) => {
   }
 };
 
-export const getOneAlbumThunk = id => async (dispatch) => {
+export const getOneAlbumThunk = (id) => async (dispatch) => {
   const response = await fetch(`/api/albums/${id}`);
-  if(response.ok){
+  if (response.ok) {
     const oneAlbum = await response.json();
-    dispatch(getOneAlbum(oneAlbum))
-    return oneAlbum
+    dispatch(getOneAlbum(oneAlbum));
+    return oneAlbum;
   }
-}
-
-
-
-
-
+};
 
 // INITIAL STATE
-const initialState = { allAlbums: {} , singleAlbum:{}};
+const initialState = { allAlbums: {}, singleAlbum: {} };
 
 // REDUCER
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_ALBUMS: {
-      const newState = { allAlbums: {}, singleAlbum:{} };
+      const newState = { allAlbums: {}, singleAlbum: { ...state.singleAlbum } };
       action.albums.forEach((album) => {
         newState.allAlbums[album.id] = album;
       });
       return newState;
     }
-    case GET_ONE_ALBUM:{
+    case GET_ONE_ALBUM: {
       const newState = {
-        allAlbums:{},
-        singleAlbum:action.album
-      }
-      return newState
+        allAlbums: { ...state.allAlbums },
+        singleAlbum: action.album,
+      };
+      return newState;
     }
-      
     default:
       return state;
   }

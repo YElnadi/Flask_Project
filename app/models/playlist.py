@@ -31,14 +31,15 @@ class Playlist(db.Model):
 
 ##one to many relationship every user can create many playlists
     user = db.relationship("User", back_populates='playlist')
+    # user_playlists = db.relationship("User", back_populates="playlist_users")
     songs = db.relationship(
         "Song",
         secondary=playlist_songs,
         back_populates="playlists"
     )
 
-    def to_dict(self):
-        return {
+    def to_dict(self, user=False, image=False):
+        playlist = {
             'id':self.id,
             'title':self.title,
             'description':self.description,
@@ -46,3 +47,12 @@ class Playlist(db.Model):
             'user':self.user.username,
             'songs':[song.to_dict() for song in self.songs]
         }
+  
+    
+        # if user:
+        #     playlist["user"] = self.user.to_dict()
+
+        # if image:
+        #     playlist["image"] = self.playlist_img_url
+
+        return playlist 

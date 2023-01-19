@@ -17,6 +17,7 @@ import SingleAlbumDetail from './components/SingleAlbumDetail'
 import SinglePlaylistDetails from './components/SinglePlaylistDetails';
 import CreatePlaylist from './components/CreatePlaylist';
 import EditPlaylistForm from './components/EditPlaylistForm';
+import Search from './components/search/search';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -75,6 +76,9 @@ function App() {
         </Route>
         <Route path='/playlists/' exact={true}>
           <CreatePlaylist />
+        </Route>
+        <Route path='/search' exact={true}>
+          <Search />
         </Route>
       </Switch>
     </BrowserRouter>

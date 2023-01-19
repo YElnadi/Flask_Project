@@ -1,0 +1,119 @@
+
+body {
+  background-color: black;
+}
+
+.main-container {
+  margin-top: '-66px';
+  margin-left: '50px';
+  padding-bottom: '80px';
+}
+
+
+#search-button-icon {
+  position: sticky;
+  top: 15px;
+  color: black;
+  background: none;
+  border: none;
+  margin-left: -390px;
+  font-size: 18px;
+}
+
+
+/* input.input-box {
+  margin-left: '4%'; 
+  margin-top: '20px'; 
+  padding-left: '35px';
+  border-radius: '25px'; 
+  height: '45px'; 
+  width: '400px'; 
+  position: 'sticky';
+  top: '2px'; 
+  border: 'none'
+} */
+
+
+
+.search-results-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 270px);
+
+}
+
+.album-container {
+  margin-top: '60px'
+}
+
+.album-container h1 {
+  margin-left: '30px'; 
+  color: 'white'
+}
+
+
+.album-cards{
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid gray; */
+  border-radius: 20px;
+  background-color: #181818;
+  color: white;
+  width: 250px;
+  cursor: pointer;
+  margin-bottom: 10px
+}
+
+.album-cards:hover{
+  transition: 1s;
+  background-color: rgb(40, 40, 40);
+}
+
+p {
+  margin-left: '15px'; 
+  font-weight: '700px';
+}
+
+.playlist-cards{
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid gray; */
+  border-radius: 20px;
+  background-color: #181818;
+  color: white;
+  width: 250px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.playlist-cards:hover{
+  transition: 1s;
+  background-color: rgb(40, 40, 40);
+}
+
+.album-image{
+  width: 220px;
+  height: 220px;
+  margin-top: 20px;
+  margin-left: 15px;
+  border-radius: 15px;
+  box-shadow: 5px 5px 12px 5px black;
+}
+
+.artist-image{
+  width: 220px;
+  height: 220px;
+  margin-top: 20px;
+  margin-left: 15px;
+  border-radius: 200px;
+}
+
+.playlist-search-image{
+  width: 220px;
+  height: 220px;
+  margin-top: 20px;
+  margin-left: 15px;
+  border-radius: 15px;
+  box-shadow: 5px 5px 12px 5px black;
+}

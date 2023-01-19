@@ -9,7 +9,7 @@ import SinglePlaylistCard from "./SinglePlaylistCard";
 const HomePage = () => {
   const dispatch = useDispatch();
   const allAlbums = useSelector((state) => state.albums.allAlbums);
-  console.log('#####allAlbums:', allAlbums)
+  // console.log('#####allAlbums:', allAlbums)
   const allPlaylists = useSelector((state) => state.playlists.allPlaylists);
 
   useEffect(async () => {
@@ -38,7 +38,9 @@ const HomePage = () => {
         <h1>Spotify Playlist</h1>
 
         {Object.values(allPlaylists).map((playlist) => (
-          <SinglePlaylistCard playlist={playlist} key={playlist.id}
+          <SinglePlaylistCard
+            playlist={playlist}
+            key={playlist.id}
             // key={playlist.id}
             // title={playlist.title}
             // description={playlist.description}

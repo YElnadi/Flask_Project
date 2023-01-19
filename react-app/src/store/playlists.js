@@ -18,17 +18,33 @@ const createNewPlaylist = (newPlaylist) => ({
   newPlaylist,
 });
 // thunk action creator
-export const loadPlaylistThunk = () => async (dispatch) => {
-  const response = await fetch("/api/playlists/");
+// export const loadPlaylistThunk = () => async (dispatch) => {
+//   const response = await fetch("/api/playlists/");
 
+//   if (response.ok) {
+//     const data = await response.json();
+//     if (data.errors) {
+//       return;
+//     }
+
+//     dispatch(loadPlaylists(data.playlists));
+//     return data.Playlists
+//   }
+// };
+
+
+export const loadPlaylistThunk = () => async (dispatch) => {
+  const response = await fetch("/api/playlists/")
   if (response.ok) {
-    const data = await response.json();
-    if (data.errors) {
-      return;
-    }
-    dispatch(loadPlaylists(data.playlists));
+      const data = await response.json()
+      dispatch(loadPlaylists(data.playlists));
+      return data.playlists
+  } else {
+      return response
   }
-};
+}
+
+
 
 export const getOnePlaylistThunk = (playlistId) => async (dispatch) => {
   const response = await fetch(`/api/playlists/${playlistId}`);

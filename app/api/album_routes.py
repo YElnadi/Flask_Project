@@ -9,16 +9,15 @@ def albums():
     albums = Album.query.all()
     #print('getallalbums', albums)
     return {"albums":[album.to_dict() for album in albums]}
-
+    
 
 ##get single album by id
 @album_routes.route('/<int:album_id>')
 def get_one_album(album_id):
     album = Album.query.get(album_id)
-    return {
-        'single-album': album.to_dict()
-    }
-
+    if not album:
+        return {"errors":"album not found"}, 404
+    return  album.to_dict()
 
 
 @album_routes.route("/<int:album_id>/songs")
@@ -28,3 +27,9 @@ def one_album_songs(album_id):
     songs = Song.query.filter(Song.album_id == album_id).all()
     album['songs'] = [song.to_dict() for song in songs]
     return album
+
+
+
+
+
+
