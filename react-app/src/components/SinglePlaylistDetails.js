@@ -3,6 +3,7 @@ import { useParams, useHistory, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getOnePlaylistThunk } from "../store/playlists";
 import EditPlaylistModal from "./EditPlayListModal";
+import EditPlaylistForm from "./EditPlaylistForm";
 
 const SinglePlaylistDetails = () => {
   const { playlistId } = useParams();
@@ -30,7 +31,8 @@ const SinglePlaylistDetails = () => {
       <p>Your are in playlist</p>
       {/* <button className="edit-playlist" onClick={submit}>Edit Playlist</button> */}
       <div>
-        <NavLink to={`/playlist/${playlistId}/edit`}>
+        <NavLink to={`/playlists/${playlistId}/edit`}>
+          {/* <EditPlaylistForm /> */}
           <img
             src={playlist.playlist_img_url}
             style={{ width: 200, height: 200 }}
