@@ -2,26 +2,40 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { loadAlbumsThunk } from "../store/albums";
-import { loadPlaylistThunk } from "../store/playlists";
+import { loadPlaylistThunk, loadMyPlaylistsThunk } from "../store/playlists";
 import SpotCards from "./SpotCards";
 import SinglePlaylistCard from "./SinglePlaylistCard";
 
 const HomePage = () => {
   const dispatch = useDispatch();
   const allAlbums = useSelector((state) => state.albums.allAlbums);
+  const user = useSelector((state) => state.session.user);
   // console.log('#####allAlbums:', allAlbums)
   const allPlaylists = useSelector((state) => state.playlists.allPlaylists);
 
-  useEffect(async () => {
-    await dispatch(loadAlbumsThunk());
-    await dispatch(loadPlaylistThunk());
-  }, [dispatch]);
-
+  useEffect(() => {
+    dispatch(loadAlbumsThunk());
+    dispatch(loadPlaylistThunk());
+    if (user) {
+      dispatch(loadMyPlaylistsThunk(user.id));
+    }
+  }, [dispatch, user]);
+  // useEffect(() => {
+  // }, [dispatch, user]);
   return (
     <>
       <div>
         <h1>Spotify8 Albums</h1>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, 200px)", gridGap: '1rem', padding:"0 20px 0 20px",backgroundColor:'black', justifyContent:'center'}}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, 200px)",
+            gridGap: "1rem",
+            padding: "0 20px 0 20px",
+            backgroundColor: "black",
+            justifyContent: "center",
+          }}
+        >
           {Object.values(allAlbums).map((album) => (
             <SpotCards
               key={album.id}
@@ -39,7 +53,14 @@ const HomePage = () => {
 
         <h1>Spotify8 Playlist</h1>
         <div
-          style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, 200px)", gridGap: '1rem', padding:"0 20px 0 20px",backgroundColor:'black', justifyContent:'center'}}
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, 200px)",
+            gridGap: "1rem",
+            padding: "0 20px 0 20px",
+            backgroundColor: "black",
+            justifyContent: "center",
+          }}
         >
           {Object.values(allPlaylists).map((playlist) => (
             <SinglePlaylistCard
