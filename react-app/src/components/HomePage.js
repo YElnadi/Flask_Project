@@ -20,39 +20,44 @@ const HomePage = () => {
   return (
     <>
       <div>
-        <h1>Spotify Albums</h1>
-        {Object.values(allAlbums).map((album) => (
-          <SpotCards
-            key={album.id}
-            title={album.title}
-            maker={album.artist}
-            image_url={album.album_img_url}
-            id={album.id}
-          />
-          // <div key={album}>
-          //   <p>{album.title}</p>
-          //   <img src={album.album_img_url} alt={album.title}/>
-          // </div>
-        ))}
+        <h1>Spotify8 Albums</h1>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, 200px)", gridGap: '1rem', padding:"0 20px 0 20px",backgroundColor:'black', justifyContent:'center'}}>
+          {Object.values(allAlbums).map((album) => (
+            <SpotCards
+              key={album.id}
+              title={album.title}
+              maker={album.artist}
+              image_url={album.album_img_url}
+              id={album.id}
+            />
+            // <div key={album}>
+            //   <p>{album.title}</p>
+            //   <img src={album.album_img_url} alt={album.title}/>
+            // </div>
+          ))}
+        </div>
 
-        <h1>Spotify Playlist</h1>
-
-        {Object.values(allPlaylists).map((playlist) => (
-          <SinglePlaylistCard
-            playlist={playlist}
-            key={playlist.id}
-            // key={playlist.id}
-            // title={playlist.title}
-            // description={playlist.description}
-            // maker={playlist.user}
-            // image_url={playlist.playlist_img_url}
-            // id={playlist.id}
-          />
-          // <div key={album}>
-          //   <p>{album.title}</p>
-          //   <img src={album.album_img_url} alt={album.title}/>
-          // </div>
-        ))}
+        <h1>Spotify8 Playlist</h1>
+        <div
+          style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, 200px)", gridGap: '1rem', padding:"0 20px 0 20px",backgroundColor:'black', justifyContent:'center'}}
+        >
+          {Object.values(allPlaylists).map((playlist) => (
+            <SinglePlaylistCard
+              playlist={playlist}
+              key={playlist.id}
+              // key={playlist.id}
+              // title={playlist.title}
+              // description={playlist.description}
+              // maker={playlist.user}
+              // image_url={playlist.playlist_img_url}
+              // id={playlist.id}
+            />
+            // <div key={album}>
+            //   <p>{album.title}</p>
+            //   <img src={album.album_img_url} alt={album.title}/>
+            // </div>
+          ))}
+        </div>
       </div>
     </>
   );

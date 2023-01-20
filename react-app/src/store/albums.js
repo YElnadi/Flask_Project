@@ -2,6 +2,7 @@ const LOAD_ALBUMS = "albums/LOAD_ALBUMS";
 const GET_ONE_ALBUM = "albums/GET_ONE_ALBUM";
 const CREATE_ALBUM = "album/CREATE_ALBUM";
 const DELETE_ALBUM = "album/DELETE_ALBUM"
+const DELETE_SONG = "album/DELETE_SONG"
 
 // ACTION CREATOR
 const loadAlbums = (albums) => ({
@@ -22,6 +23,12 @@ const createNewAlbum = (newAlbum) => ({
 const deleteAlbum = (albumId) => ({
   type:DELETE_ALBUM,
   albumId
+})
+
+
+const deleteSong = (songId) =>({
+  type:DELETE_SONG,
+  songId
 })
 
 
@@ -60,13 +67,24 @@ export const createNewAlbumThunk = (newAlbum) => async (dispatch) => {
 
 export const deleteAlbumThunk = (albumId) => async (dispatch) => {
   const response = await fetch(`/api/albums/${albumId}`, {
-    methods: "DELETE",
+    method: "DELETE",
   });
   if (response.ok) {
     dispatch(deleteAlbum(albumId));
     return response;
   }
 };
+
+
+export const deleteSongThunk = (songId) => async (dispatch) =>{
+  const response = await fetch(`/api/songs/${songId}`, {
+    method:"DELETE"
+  });
+  if(response.ok){
+    dispatch(deleteSong(songId));
+    return response; 
+  }
+}
 
 // INITIAL STATE
 const initialState = { allAlbums: {}, singleAlbum: {} };

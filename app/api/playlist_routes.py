@@ -90,7 +90,7 @@ def delete_playlist(id):
         else:
             return {"message": "Cannot delete playlist not owned by you!"}
     else:
-        return {"message": f"No project found with id of {id}"}
+        return {"message": f"No playlist found with id of {id}"}
     
 
     

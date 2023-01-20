@@ -18,7 +18,8 @@ const SingleAlbumDetail = () => {
 
   const deleteAlbum = (e) => {
     e.preventDefault();
-    return dispatch(deleteAlbumThunk(album.id)).then(history.push("/"));
+    return dispatch(deleteAlbumThunk(albumId))
+    .then(history.push("/"));
   };
 
   const addToAlbum = (e) =>{

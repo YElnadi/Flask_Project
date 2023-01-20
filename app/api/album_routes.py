@@ -14,7 +14,7 @@ def albums():
     
 
 ##get single album by id
-@album_routes.route('/<int:album_id>')
+@album_routes.route('/<int:album_id>', methods=["GET"])
 def get_one_album(album_id):
     album = Album.query.get(album_id)
     if not album:
@@ -52,5 +52,15 @@ def new_album():
       return form.errors 
 
 
-
+##Delete Album
+@album_routes.route("/<int:id>", methods=['DELETE'])
+@login_required
+def delete_album(id):
+    album = Album.query.get(id)
+    if album:
+        db.session.delete(album)
+        db.session.commit()
+        return {"message":"Album has been deleted successfully"}
+    else:
+        return {"message": f"No album found with id of {id}"}
 
