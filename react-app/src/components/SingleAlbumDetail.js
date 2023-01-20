@@ -21,6 +21,11 @@ const SingleAlbumDetail = () => {
     return dispatch(deleteAlbumThunk(album.id)).then(history.push("/"));
   };
 
+  const addToAlbum = (e) =>{
+    e.preventDefault();
+    history.push(`/albums/${album.id}/add`)
+  }
+
   useEffect(async () => {
     await dispatch(getOneAlbumThunk(albumId));
   }, [dispatch, albumId]);
@@ -47,6 +52,11 @@ const SingleAlbumDetail = () => {
           .map((song) => song.title)
           .join("\n")}
       </div>
+      {user && album && user.id === album.owner_id && (
+          <button className="add-song-button" onClick={addToAlbum}>
+            Add song
+          </button>
+        )}
     </>
   );
 };

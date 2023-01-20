@@ -73,6 +73,9 @@ function App() {
         <Route path="/playlists/:playlistId/edit" exact={true}>
           <EditPlaylistForm />
         </Route>
+        <Route path="/albums/:albumId/add" exact={true}>
+          <UploadSongs/>
+        </Route>
         <Route path="/playlists/:playlistId" exact={true}>
           <SinglePlaylistDetails />
         </Route>

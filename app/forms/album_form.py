@@ -9,3 +9,4 @@ class AlbumForm(FlaskForm):
   album_img_url = TextField('Album Image URL')
   owner_id = IntegerField('Owner Id')
   submit = SubmitField('Submit')
+
