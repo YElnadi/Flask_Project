@@ -42,6 +42,7 @@ class Playlist(db.Model):
         playlist = {
             'id':self.id,
             'title':self.title,
+            'user_id':self.user_id, 
             'description':self.description,
             'playlist_img_url':self.playlist_img_url,
             'user':self.user.username,

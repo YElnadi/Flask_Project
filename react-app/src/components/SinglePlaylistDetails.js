@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useHistory, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getOnePlaylistThunk } from "../store/playlists";
+import { getOnePlaylistThunk, deletePlaylistThunk } from "../store/playlists";
 import EditPlaylistModal from "./EditPlayListModal";
 import EditPlaylistForm from "./EditPlaylistForm";
 
@@ -10,8 +10,11 @@ const SinglePlaylistDetails = () => {
   // console.log("#####playlistId:", playlistId);
   const dispatch = useDispatch();
   const history = useHistory();
+  const user = useSelector((state) => state.session.user);
   const playlist = useSelector((state) => state.playlists.singlePlaylist);
-  // console.log("####playlist", playlist)
+  console.log("---------- playlist: --------", playlist);
+  console.log("---------- user: --------", user);
+  
 
   const getSongs = (playlist) => {
     const songs = playlist.songs !== undefined ? playlist.songs : [];
@@ -20,6 +23,11 @@ const SinglePlaylistDetails = () => {
   const submit = (e) => {
     e.preventDefault();
     history.push(`/playlists/${playlistId}/edit`);
+  };
+
+  const deletePlaylist = (e) => {
+    e.preventDefault();
+    return dispatch(deletePlaylistThunk(playlistId)).then(history.push("/"));
   };
 
   useEffect(() => {
@@ -36,9 +44,23 @@ const SinglePlaylistDetails = () => {
           <img
             src={playlist.playlist_img_url}
             style={{ width: 200, height: 200 }}
-          />edit
+          />
+          edit
         </NavLink>
       </div>
+
+      <div>
+        {user && playlist && user.id === playlist.user_id && (
+          <button className="delete-playlist" onClick={deletePlaylist}>
+            Delete
+          </button>
+        )}
+      </div>
+
+      {/* <button style={{ width: 50 }} onClick={deletePlaylist}>
+        delete
+      </button> */}
+
       <div>
         <p>{playlist.title}</p>
       </div>
