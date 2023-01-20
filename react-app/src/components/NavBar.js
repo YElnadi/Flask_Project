@@ -5,6 +5,7 @@ import LogoutButton from "./auth/LogoutButton";
 // import {createNewPlaylistThunk} from '../store/playlists'
 import CreatePlaylist from "./CreatePlaylist";
 import CreateAlbum from "./CreateAlbum";
+import EditPlaylistModal from "./EditPlayListModal";
 
 const NavBar = () => {
   const user = useSelector((state) => state.session.user);

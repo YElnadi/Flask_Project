@@ -16,10 +16,12 @@ import HomePage from "./components/HomePage";
 import SingleAlbumDetail from "./components/SingleAlbumDetail";
 import SinglePlaylistDetails from "./components/SinglePlaylistDetails";
 import CreatePlaylist from "./components/CreatePlaylist";
-import EditPlaylistForm from "./components/EditPlaylistForm";
 import Search from "./components/search/search";
 import AudioPlayer from "./components/ContinuousPlayer";
 import Player from "./components/ContinuousPlayer";
+
+import EditPlaylistForm from "./components/EditPlaylistForm";
+import EditPlaylistModal from "./components/EditPlayListModal";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -70,12 +72,16 @@ function App() {
         <Route path="/albums/:albumId" exact={true}>
           <SingleAlbumDetail />
         </Route>
-        <Route path="/playlists/:playlistId/edit" exact={true}>
-          <EditPlaylistForm />
-        </Route>
         <Route path="/playlists/:playlistId" exact={true}>
           <SinglePlaylistDetails />
         </Route>
+
+        <Route path="/playlists/:playlistId/edit" exact={true}>
+          <EditPlaylistForm />
+        </Route>
+
+
+
         <Route path="/playlists/" exact={true}>
           <CreatePlaylist />
         </Route>

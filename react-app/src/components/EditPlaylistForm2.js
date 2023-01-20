@@ -8,15 +8,11 @@ const EditPlaylistForm = ({ playlistId }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const state = useSelector((state) =>
-    console.log("state here: ---------------\n", state)
-  );
 
-  const playList = useSelector((state) => state.playlists.allPlaylists); // all playlist
+  const playList = useSelector((state) => state.allPlaylists); // all playlist
   console.log("playlist: ---------------- \n", playList);
-
   const playlistArray = Object.values(playList);
-  console.log("playlist array: ---------------- \n", playlistArray);
+  // console.log('playlist array: ---------------- \n', playlistArray)
 
   const userPlaylist = playlistArray.filter(
     (playlist) => Number(playlist.id) === Number(playlistId)

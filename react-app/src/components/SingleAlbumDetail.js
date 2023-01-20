@@ -15,17 +15,24 @@ const SingleAlbumDetail = () => {
     return Object.values(songs);
   };
 
+  
+
   console.log("$$$$$$album:", album);
 
   useEffect(async () => {
     await dispatch(getOneAlbumThunk(albumId));
   }, [dispatch, albumId]);
 
+
+
   return (
     <>
       <h1>You are in the album</h1>
       <div>
-        <img src={album.album_img_url} style={{ width: 200, height: 200 }} />
+        <img 
+          src={album.album_img_url} 
+          style={{ width: 200, height: 200 }} 
+        />
       </div>
       <div>
         <p>{album.title}</p>
