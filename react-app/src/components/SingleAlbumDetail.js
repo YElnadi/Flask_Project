@@ -12,64 +12,58 @@ const SingleAlbumDetail = () => {
   const album = useSelector((state) => state.albums.singleAlbum);
   const user = useSelector((state) => state.session.user);
 
-  const getSongs = (album) => {
-    const songs = album.songs !== undefined ? album.songs : [];
-    return Object.values(songs);
-  };
-
   const deleteAlbum = (e) => {
     e.preventDefault();
-    return dispatch(deleteAlbumThunk(albumId))
-    .then(history.push("/"));
+    return dispatch(deleteAlbumThunk(albumId)).then(history.push("/"));
   };
 
-  const addToAlbum = (e) =>{
+  const addToAlbum = (e) => {
     e.preventDefault();
-    history.push(`/albums/${album.id}/add`)
-  }
+    history.push(`/albums/${album.id}/add`);
+  };
 
-
-  useEffect(async () => {
-    await dispatch(getOneAlbumThunk(albumId));
+  useEffect(() => {
+    dispatch(getOneAlbumThunk(albumId));
   }, [dispatch, albumId]);
 
   return (
     <>
-      <h1>You are in the album</h1>
-      <div>
-        <img src={album.album_img_url} style={{ width: 200, height: 200 }} />
-      </div>
-      <div>
-        {user && album && user.id === album.owner_id && (
-          <button className="delete-album" onClick={deleteAlbum}>
-            Delete
-          </button>
-        )}
-      </div>
-      <div>
-        <p>{album.title}</p>
-      </div>
-      <div>{getSongs(album).length}</div>
-      <div style={{ whiteSpace: "pre-line" }}>
-        {getSongs(album)
-          .map((song) => (
-            <div className='single-song-detail' >
-              <div className='song-title'>{song.title}</div>
-              {user && album && user.id === album.owner_id && 
-              <SongDeleteButton song={song}/>
-              }
-            </div>
-            )
-          
+      {Object.values(album).length && (
+        <>
+          <h1>You are in the album</h1>
+          <div>
+            <img
+              src={album.album_img_url}
+              style={{ width: 200, height: 200 }}
+            />
+          </div>
+          <div>
+            {user && album && user.id === album.owner_id && (
+              <button className="delete-album" onClick={deleteAlbum}>
+                Delete
+              </button>
+            )}
+          </div>
+          <div>
+            <p>{album.title}</p>
+          </div>
+          {user &&
+            album &&
+            album.songs.length &&
+            album.songs.map((song) => (
+              <div className="song-details-container">
+                <div className="song-details-title">{song.title}</div>
 
-          )
-          .join("\n")}
-      </div>
-      {user && album && user.id === album.owner_id && (
-          <button className="add-song-button" onClick={addToAlbum}>
-            Add song
-          </button>
-        )}
+                <SongDeleteButton song={song} />
+              </div>
+            ))}
+          {user && album && user.id === album.owner_id && (
+            <button className="add-song-button" onClick={addToAlbum}>
+              Add song
+            </button>
+          )}
+        </>
+      )}
     </>
   );
 };
