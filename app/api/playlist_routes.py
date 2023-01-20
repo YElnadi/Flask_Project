@@ -102,17 +102,17 @@ def delete_playlist(id):
         return {"message": f"No playlist found with id of {id}"}
 
 
-# @playlist_routes.route("/<int:playlist_id/songs/<int:song_id>", methods=["POST"])
-# @login_required
-# def add_song_to_playlist(playlist_id, song_id):
-#     playlist = Playlist.query.get(playlist_id)
-#     song = Song.query.get(song_id)
-#     if playlist:
-#         if song:
-#           playlist.songs.append(song)
-#           db.session.commit()
-#           return playlist.to_dict()
-#         else:
-#           return {"error": f"No song with that {song_id}"}, 404
-#     else:
-#         return {"error": f"No playlist with that {playlist_id}"}, 404
+@playlist_routes.route("/<int:playlist_id>/songs/<int:song_id>", methods=["POST"])
+@login_required
+def add_song_to_playlist(playlist_id, song_id):
+    playlist = Playlist.query.get(playlist_id)
+    song = Song.query.get(song_id)
+    if playlist:
+        if song:
+          playlist.songs.append(song)
+          db.session.commit()
+          return playlist.to_dict()
+        else:
+          return {"error": f"No song with that {song_id}"}, 404
+    else:
+        return {"error": f"No playlist with that {playlist_id}"}, 404
