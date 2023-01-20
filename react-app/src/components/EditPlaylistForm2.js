@@ -1,36 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./EditPlaylist.css";
 import * as allPlayListThunks from "../store/playlists";
 
-const EditPlaylistForm = () => {
-  const { playlistId } = useParams()
+const EditPlaylistForm = ({ playlistId }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  console.log('session user ------------', sessionUser)
-  const state = useSelector((state) =>
-    console.log("state here: ---------------\n", state)
-  );
 
-  const playList = useSelector((state) => state.playlists.allPlaylists); // all playlist
+  const playList = useSelector((state) => state.allPlaylists); // all playlist
   console.log("playlist: ---------------- \n", playList);
-
   const playlistArray = Object.values(playList);
-  console.log("playlist array: ---------------- \n", playlistArray);
-  /////////////////////
+  // console.log('playlist array: ---------------- \n', playlistArray)
+
   const userPlaylist = playlistArray.filter(
-    (playlist) => playlist.user_id === sessionUser.id
+    (playlist) => Number(playlist.id) === Number(playlistId)
   );
 
-
-    console.log("userplaylist : ---------------- \n", userPlaylist);
-////////////////////////
   const [image, setImage] = useState("");
   const [errors, setErrors] = useState([]);
-  const [title, setTitle] = useState('please enter title');
-  const [description, setDescription] = useState('please enter discription');
+  const [title, setTitle] = useState(userPlaylist[0].title);
+  const [description, setDescription] = useState(userPlaylist[0].description);
   const formData = new FormData(); // captures form inputs as kvp-object of form
 
   useEffect(async () => {
@@ -163,7 +154,7 @@ const EditPlaylistForm = () => {
             <label htmlFor="file-input">
               <img
                 style={{ width: "200px", height: "210px" }}
-                // src={userPlaylist[0].playlist_img_url}
+                src={userPlaylist[0].playlist_img_url}
               />
             </label>
             <input
