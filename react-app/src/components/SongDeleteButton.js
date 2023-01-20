@@ -3,14 +3,17 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteSongThunk } from "../store/albums";
 
-const SongDeleteButton = ({ song }) => {
+const SongDeleteButton = ({ song, index }) => {
   const user = useSelector((state) => state.session.user);
   const album = useSelector((state) => state.albums.singleAlbum);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const deleteSong = (e) => {
     e.preventDefault();
-    return dispatch(deleteSongThunk(song.id))
+    return dispatch(deleteSongThunk(song.id, index)).then(
+      history.push(`/albums/${album.id}`)
+    );
   };
 
   return (
@@ -24,5 +27,4 @@ const SongDeleteButton = ({ song }) => {
   );
 };
 
-
-export default SongDeleteButton
+export default SongDeleteButton;

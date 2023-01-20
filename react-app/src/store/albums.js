@@ -25,9 +25,9 @@ const deleteAlbum = (albumId) => ({
   albumId,
 });
 
-const deleteSong = (songId) => ({
+const deleteSong = (index) => ({
   type: DELETE_SONG,
-  songId,
+  index,
 });
 
 // THUNK
@@ -73,12 +73,12 @@ export const deleteAlbumThunk = (albumId) => async (dispatch) => {
   }
 };
 
-export const deleteSongThunk = (songId) => async (dispatch) => {
+export const deleteSongThunk = (songId, index) => async (dispatch) => {
   const response = await fetch(`/api/songs/${songId}`, {
     method: "DELETE",
   });
   if (response.ok) {
-    dispatch(deleteSong(songId));
+    dispatch(deleteSong(index));
     return response;
   }
 };
@@ -125,13 +125,11 @@ export default function reducer(state = initialState, action) {
     case DELETE_SONG: {
       const newState = {
         allAlbums: { ...state.allAlbums },
-        singleAlbum: {},
+        singleAlbum: { ...state.singleAlbum },
       };
-      newState.singleAlbum.songs.forEach((song, index) => {
-        if (song.id === action.songId) {
-          delete newState.singleAlbum.songs[index];
-        }
-      });
+      if (newState.singleAlbum.songs.length) {
+        delete newState.singleAlbum.songs[action.index];
+      }
       return newState;
     }
     default:

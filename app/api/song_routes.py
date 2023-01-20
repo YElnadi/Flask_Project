@@ -56,11 +56,8 @@ def get_all_songs():
 def delete_song(id):
     song = Song.query.get(id)
     if song:
-        if song.user_id == current_user.id:
-            db.session.delete(song)
-            db.session.commit()
-            return {"message": "Song successfully deleted"}
-        else:
-            return {"message": "Cannot delete song not owned by you!"}
+        db.session.delete(song)
+        db.session.commit()
+        return {"message": "Song successfully deleted"}
     else:
-        return {"message": f"No project found with id of {id}"}
+        return {"message": f"No song found with id of {id}"}

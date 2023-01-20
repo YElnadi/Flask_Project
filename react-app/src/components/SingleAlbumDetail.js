@@ -50,11 +50,11 @@ const SingleAlbumDetail = () => {
           {user &&
             album &&
             album.songs.length &&
-            album.songs.map((song) => (
-              <div className="song-details-container">
+            album.songs.map((song, index) => (
+              <div className="song-details-container" key={song}>
                 <div className="song-details-title">{song.title}</div>
 
-                <SongDeleteButton song={song} />
+                <SongDeleteButton song={song} index={index} />
               </div>
             ))}
           {user && album && user.id === album.owner_id && (

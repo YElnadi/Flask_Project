@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request 
+from flask import Blueprint, jsonify, request
 from app.models import db, Album, Song
 from flask_login import login_required, current_user
 from ..forms.album_form import AlbumForm
@@ -11,7 +11,7 @@ def albums():
     albums = Album.query.all()
     #print('getallalbums', albums)
     return {"albums":[album.to_dict() for album in albums]}
-    
+
 
 ##get single album by id
 @album_routes.route('/<int:album_id>', methods=["GET"])
@@ -34,7 +34,7 @@ def get_one_album(album_id):
 
 # create a new album
 @album_routes.route('/', methods=['POST'])
-# @login_required
+@login_required
 def new_album():
 
     form = AlbumForm()
@@ -44,12 +44,12 @@ def new_album():
       new_Album = Album()
       form.populate_obj(new_Album)
       new_Album.album_img_url = form.data['album_img_url'] if form.data['album_img_url'] else '/static/images/unknown-album-cover.jpeg'
-      
+
       db.session.add(new_Album)
       db.session.commit()
       return new_Album.to_dict()
-    else: 
-      return form.errors 
+    else:
+      return form.errors
 
 
 ##Delete Album
@@ -63,4 +63,3 @@ def delete_album(id):
         return {"message":"Album has been deleted successfully"}
     else:
         return {"message": f"No album found with id of {id}"}
-
