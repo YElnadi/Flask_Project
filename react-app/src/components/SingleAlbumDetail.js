@@ -5,6 +5,7 @@ import { getOneAlbumThunk } from "../store/albums";
 import { deleteAlbumThunk } from "../store/albums";
 import SongDeleteButton from "./SongDeleteButton";
 import EditSongForm from "./EditSongForm";
+import AddSongToPlaylistButton from "./AddSongToPlaylistButton";
 
 const SingleAlbumDetail = () => {
   const { albumId } = useParams();
@@ -12,6 +13,7 @@ const SingleAlbumDetail = () => {
   const history = useHistory();
   const album = useSelector((state) => state.albums.singleAlbum);
   const user = useSelector((state) => state.session.user);
+  const myPlaylists = useSelector((state) => state.playlists.myPlaylists);
 
   const deleteAlbum = (e) => {
     e.preventDefault();
@@ -65,6 +67,9 @@ const SingleAlbumDetail = () => {
                     song={song}
                     index={index}
                   />
+                )}
+                {user.id && Object.values(myPlaylists).length && (
+                  <AddSongToPlaylistButton buttonClicked={false} song={song} />
                 )}
               </div>
             ))}

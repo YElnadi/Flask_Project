@@ -2,8 +2,9 @@ const LOAD_PLAYLISTS = "playlists/LOAD_PLAYLISTS";
 const GET_ONE_PLAYLIST = "playlists/GET_ONE_PLAYLIST";
 const CREATE_PLAYLIST = "playlists/CREATE_PLAYLIST";
 const EDIT_PLAYLIST = "playlists/EDIT_PLAYLIST";
-const DELETE_PLAYLIST = "/playlists/DELETE_PLAYLIST";
+const DELETE_PLAYLIST = "playlists/DELETE_PLAYLIST";
 const LOAD_MY_PLAYLISTS = "playlists/LOAD_MY_PLAYLISTS";
+const ADD_SONG_TO_PLAYLIST = "playlists/ADD_SONG_TO_PLAYLIST";
 
 // action creators
 const loadPlaylists = (playlists) => ({
@@ -24,6 +25,11 @@ const createNewPlaylist = (newPlaylist) => ({
 const loadMyPlaylists = (data) => ({
   type: LOAD_MY_PLAYLISTS,
   data,
+});
+
+const addSongToPlaylist = (playlist) => ({
+  type: ADD_SONG_TO_PLAYLIST,
+  playlist,
 });
 // thunk action creator
 // export const loadPlaylistThunk = () => async (dispatch) => {
@@ -110,6 +116,22 @@ export const loadMyPlaylistsThunk = (id) => async (dispatch) => {
   }
 };
 
+export const addSongToPlaylistThunk =
+  (songId, playlistId) => async (dispatch) => {
+    const response = await fetch(
+      `/api/playlists/${playlistId}/songs/${songId}`,
+      {
+        method: "POST",
+      }
+    );
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(addSongToPlaylist(data));
+      return data;
+    } else {
+      return response;
+    }
+  };
 
 // main Reducer
 const initialState = { allPlaylists: {}, singlePlaylist: {}, myPlaylists: {} };
@@ -151,7 +173,7 @@ export default function reducer(state = initialState, action) {
       const newState = {
         ...state,
         allPlaylists: { ...state.allPlaylists },
-        singlePlaylist:{...state.singlePlaylist},
+        singlePlaylist: { ...state.singlePlaylist },
         myPlaylists: {},
       };
       action.data.playlists.forEach((playlist) => {
@@ -162,13 +184,13 @@ export default function reducer(state = initialState, action) {
 
     case EDIT_PLAYLIST: {
       const newState = {
-        allPlaylists: {...state.allPlaylists},
+        allPlaylists: { ...state.allPlaylists },
         singlePlaylist: { ...state.singlePlaylist },
-        myPlaylists:{...state.myPlaylists}
+        myPlaylists: { ...state.myPlaylists },
       };
       newState.allPlaylists[action.playlist.id] = action.playlist;
       newState.myPlaylists[action.playlist.id] = action.playlist;
-      newState.singlePlaylist=action.playlist;
+      newState.singlePlaylist = action.playlist;
       return newState;
     }
 
@@ -176,13 +198,30 @@ export default function reducer(state = initialState, action) {
       const newState = {
         allPlaylists: { ...state.allPlaylists },
         singlePlaylist: {},
-        myPlaylists:{...state.myPlaylists}
+        myPlaylists: { ...state.myPlaylists },
       };
       delete newState.allPlaylists[action.playlistId];
       delete newState.myPlaylists[action.playlistId];
       return newState;
     }
-
+    case ADD_SONG_TO_PLAYLIST: {
+      const newState = {
+        allPlaylists: { ...state.allPlaylists },
+        singlePlaylist: state.singlePlaylist,
+        myPlaylists: { ...state.myPlaylists },
+      };
+      // updates the playlist in the allPlaylist store
+      newState.allPlaylists[action.playlist.id] = action.playlist;
+      newState.myPlaylists[action.playlist.id] = action.playlist;
+      // if there are keys and values in single playlist
+      // we want to overwrite that playlist if it's in the single playlist State
+      if (Object.values(newState.singlePlaylist).length) {
+        if (newState.singlePlaylist.id === action.playlist.id) {
+          newState.singlePlaylist = action.playlist;
+        }
+      }
+      return newState;
+    }
     default:
       return state;
   }

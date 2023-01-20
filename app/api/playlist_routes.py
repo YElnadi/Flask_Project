@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request, render_template
-from app.models import Playlist, db
+from app.models import Song, Playlist, db
 from flask_login import login_required, current_user
 from ..forms.playlist_form import PlaylistForm
 
@@ -100,3 +100,19 @@ def delete_playlist(id):
         return {"message":"Playlist has been deleted successfully"}
     else:
         return {"message": f"No playlist found with id of {id}"}
+
+
+# @playlist_routes.route("/<int:playlist_id/songs/<int:song_id>", methods=["POST"])
+# @login_required
+# def add_song_to_playlist(playlist_id, song_id):
+#     playlist = Playlist.query.get(playlist_id)
+#     song = Song.query.get(song_id)
+#     if playlist:
+#         if song:
+#           playlist.songs.append(song)
+#           db.session.commit()
+#           return playlist.to_dict()
+#         else:
+#           return {"error": f"No song with that {song_id}"}, 404
+#     else:
+#         return {"error": f"No playlist with that {playlist_id}"}, 404

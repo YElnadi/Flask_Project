@@ -119,7 +119,7 @@ export default function reducer(state = initialState, action) {
     case GET_ONE_ALBUM: {
       const newState = {
         allAlbums: { ...state.allAlbums },
-        singleAlbum: { ...action.album },
+        singleAlbum: action.album,
       };
       return newState;
     }
@@ -127,7 +127,7 @@ export default function reducer(state = initialState, action) {
       const newState = {
         ...state,
         allAlbums: { ...state.allAlbums },
-        singleAlbum: {},
+        singleAlbum: action.newAlbum,
       };
       newState.allAlbums[action.newAlbum.id] = action.newAlbum;
       newState.singleAlbum = action.newAlbum;
