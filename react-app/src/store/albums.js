@@ -1,8 +1,8 @@
 const LOAD_ALBUMS = "albums/LOAD_ALBUMS";
 const GET_ONE_ALBUM = "albums/GET_ONE_ALBUM";
 const CREATE_ALBUM = "album/CREATE_ALBUM";
-const DELETE_ALBUM = "album/DELETE_ALBUM"
-const DELETE_SONG = "album/DELETE_SONG"
+const DELETE_ALBUM = "album/DELETE_ALBUM";
+const DELETE_SONG = "album/DELETE_SONG";
 
 // ACTION CREATOR
 const loadAlbums = (albums) => ({
@@ -21,16 +21,14 @@ const createNewAlbum = (newAlbum) => ({
 });
 
 const deleteAlbum = (albumId) => ({
-  type:DELETE_ALBUM,
-  albumId
-})
+  type: DELETE_ALBUM,
+  albumId,
+});
 
-
-const deleteSong = (songId) =>({
-  type:DELETE_SONG,
-  songId
-})
-
+const deleteSong = (songId) => ({
+  type: DELETE_SONG,
+  songId,
+});
 
 // THUNK
 export const loadAlbumsThunk = () => async (dispatch) => {
@@ -75,16 +73,15 @@ export const deleteAlbumThunk = (albumId) => async (dispatch) => {
   }
 };
 
-
-export const deleteSongThunk = (songId) => async (dispatch) =>{
+export const deleteSongThunk = (songId) => async (dispatch) => {
   const response = await fetch(`/api/songs/${songId}`, {
-    method:"DELETE"
+    method: "DELETE",
   });
-  if(response.ok){
+  if (response.ok) {
     dispatch(deleteSong(songId));
-    return response; 
+    return response;
   }
-}
+};
 
 // INITIAL STATE
 const initialState = { allAlbums: {}, singleAlbum: {} };
@@ -110,19 +107,32 @@ export default function reducer(state = initialState, action) {
       const newState = {
         ...state,
         allAlbums: { ...state.allAlbums },
-        singleAlbum:{}
+        singleAlbum: {},
       };
       newState.allAlbums[action.newAlbum.id] = action.newAlbum;
-      newState.singleAlbum=action.newAlbum
+      newState.singleAlbum = action.newAlbum;
       return newState;
     }
-    case DELETE_ALBUM:{
+    case DELETE_ALBUM: {
       const newState = {
-        allAlbums:{...state.allAlbums},
-        singleAlbum:{}
-      }
-      delete newState.allAlbums[action.albumId]
-      return newState
+        allAlbums: { ...state.allAlbums },
+        singleAlbum: {},
+      };
+      delete newState.allAlbums[action.albumId];
+      return newState;
+    }
+
+    case DELETE_SONG: {
+      const newState = {
+        allAlbums: { ...state.allAlbums },
+        singleAlbum: {},
+      };
+      newState.singleAlbum.songs.forEach((song, index) => {
+        if (song.id === action.songId) {
+          delete newState.singleAlbum.songs[index];
+        }
+      });
+      return newState;
     }
     default:
       return state;

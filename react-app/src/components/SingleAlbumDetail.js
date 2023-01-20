@@ -3,6 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getOneAlbumThunk } from "../store/albums";
 import { deleteAlbumThunk } from "../store/albums";
+import SongDeleteButton from "./SongDeleteButton";
 
 const SingleAlbumDetail = () => {
   const { albumId } = useParams();
@@ -27,6 +28,7 @@ const SingleAlbumDetail = () => {
     history.push(`/albums/${album.id}/add`)
   }
 
+
   useEffect(async () => {
     await dispatch(getOneAlbumThunk(albumId));
   }, [dispatch, albumId]);
@@ -50,7 +52,17 @@ const SingleAlbumDetail = () => {
       <div>{getSongs(album).length}</div>
       <div style={{ whiteSpace: "pre-line" }}>
         {getSongs(album)
-          .map((song) => song.title)
+          .map((song) => (
+            <div className='single-song-detail' >
+              <div className='song-title'>{song.title}</div>
+              {user && album && user.id === album.owner_id && 
+              <SongDeleteButton song={song}/>
+              }
+            </div>
+            )
+          
+
+          )
           .join("\n")}
       </div>
       {user && album && user.id === album.owner_id && (

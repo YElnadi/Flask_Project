@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { deleteSongThunk } from "../store/albums";
 
 const SongDeleteButton = ({ song }) => {
   const user = useSelector((state) => state.session.user);
   const album = useSelector((state) => state.albums.singleAlbum);
+  const dispatch = useDispatch()
 
   const deleteSong = (e) => {
     e.preventDefault();
@@ -21,3 +23,6 @@ const SongDeleteButton = ({ song }) => {
     </>
   );
 };
+
+
+export default SongDeleteButton
