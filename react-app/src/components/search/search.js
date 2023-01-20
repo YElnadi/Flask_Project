@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import * as playlistThunks from "../../store/playlists";
 import "./search.css";
+import songImage from "../../static/images/song-cover.jpeg";
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -146,6 +147,36 @@ const Search = () => {
                       {/* By {playlist.user.username} */}
                       {playlist.description}
                     </span>
+                  </div>
+                )
+            )}
+        </div>
+
+        {/*---------------- song div -----------------*/}
+
+        <h1 hidden={searchShow ? false : true}> Songs </h1>
+        <div className="search-results-container">
+          {songs
+            .filter((song) => {
+              if (searchInput === "") {
+                return song;
+              } else if (
+                song.title.toLowerCase().includes(searchInput.toLowerCase())
+              ) {
+                return song;
+              }
+            })
+            .map(
+              (song, index) =>
+                searchShow === true && (
+                  <div
+                    onClick={(e) => history.push(`/song/${song.id}`)}
+                    className="album-cards"
+                    key={index}
+                  >
+                    {/* <img className="album-image" src={song.song_img_url} /> */}
+                    <img className="album-image" src={songImage} />
+                    <p>{song.title}</p>
                   </div>
                 )
             )}

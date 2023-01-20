@@ -85,10 +85,8 @@ export const editPlaylistThunk = (playlist, id) => async (dispatch) => {
     body: JSON.stringify(playlist),
   });
   if (response.ok) {
-    const data = await response.json();
-    dispatch(editPlaylist(data));
-    return data;
-  } else {
+    // const data = await response.json();
+    dispatch(editPlaylist(playlist));
     return response;
   }
 };
