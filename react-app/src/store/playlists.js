@@ -76,10 +76,8 @@ export const editPlaylistThunk = (playlist, id) => async (dispatch) => {
     body: JSON.stringify(playlist),
   });
   if (response.ok) {
-    const data = await response.json();
-    dispatch(editPlaylist(data));
-    return data;
-  } else {
+    // const data = await response.json();
+    dispatch(editPlaylist(playlist));
     return response;
   }
 };
@@ -126,10 +124,11 @@ export default function reducer(state = initialState, action) {
 
     case EDIT_PLAYLIST: {
       const newState = {
-        // allPlaylists: {...state.allPlaylists},
+        allPlaylists: { ...state.allPlaylists },
         singlePlaylist: { ...state.singlePlaylist },
       };
-      newState[action.playlist.id] = action.playlist;
+      // newState[action.playlist.id] = action.playlist;
+      newState.allPlaylists[action.playlist.id] = action.playlist;
       return newState;
     }
 

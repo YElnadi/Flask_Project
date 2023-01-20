@@ -12,7 +12,7 @@ const SinglePlaylistDetails = () => {
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const playlist = useSelector((state) => state.playlists.singlePlaylist);
-  console.log("---------- playlist: --------", playlist);
+  console.log("shihi---------- playlist: --------", playlist);
   console.log("---------- user: --------", user);
 
   const getSongs = (playlist) => {
