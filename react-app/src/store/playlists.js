@@ -125,7 +125,7 @@ export default function reducer(state = initialState, action) {
       const newState = {
         ...state,
         allPlaylists: { ...state.allPlaylists },
-        singlePlaylist: action.newPlaylist,
+        singlePlaylist:{...state.singlePlaylist},
         myPlaylists: {},
       };
       action.data.playlists.forEach((playlist) => {

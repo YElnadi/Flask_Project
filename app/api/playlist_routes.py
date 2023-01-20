@@ -37,6 +37,7 @@ def get_my_playlists(id):
     else:
         return {'playlists': None}
 
+
 # create a new playlist
 @playlist_routes.route('/', methods=['POST'])
 # @login_required
