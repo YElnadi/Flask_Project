@@ -3,6 +3,7 @@ const GET_ONE_ALBUM = "albums/GET_ONE_ALBUM";
 const CREATE_ALBUM = "album/CREATE_ALBUM";
 const DELETE_ALBUM = "album/DELETE_ALBUM";
 const DELETE_SONG = "album/DELETE_SONG";
+const EDIT_SONG = "album/EDIT_SONG";
 
 // ACTION CREATOR
 const loadAlbums = (albums) => ({
@@ -28,6 +29,11 @@ const deleteAlbum = (albumId) => ({
 const deleteSong = (index) => ({
   type: DELETE_SONG,
   index,
+});
+
+const editSong = (data) => ({
+  type: EDIT_SONG,
+  data,
 });
 
 // THUNK
@@ -83,6 +89,20 @@ export const deleteSongThunk = (songId, index) => async (dispatch) => {
   }
 };
 
+export const editSongThunk = (song, index) => async (dispatch) => {
+  const response = await fetch(`/api/songs/${song.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(song),
+  });
+  if (response.ok) {
+    dispatch(editSong({ song, index }));
+    return response;
+  }
+};
+
 // INITIAL STATE
 const initialState = { allAlbums: {}, singleAlbum: {} };
 
@@ -129,6 +149,16 @@ export default function reducer(state = initialState, action) {
       };
       if (newState.singleAlbum.songs.length) {
         delete newState.singleAlbum.songs[action.index];
+      }
+      return newState;
+    }
+    case EDIT_SONG: {
+      const newState = {
+        allAlbums: { ...state.allAlbums },
+        singleAlbum: { ...state.singleAlbum },
+      };
+      if (newState.singleAlbum.songs.length) {
+        newState.singleAlbum.songs[action.data.index] = action.data.song;
       }
       return newState;
     }

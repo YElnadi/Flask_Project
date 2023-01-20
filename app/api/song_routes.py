@@ -49,6 +49,15 @@ def get_all_songs():
     songs = Song.query.order_by(Song.id.desc()).all()
     return {"songs": [song.to_dict() for song in songs]}
 
+@song_routes.route('/<int:id>', methods=["PUT"])
+@login_required
+def edit_song(id):
+    song = Song.query.get(id)
+    new_title = request.json['title']
+    if song:
+        song.title = new_title
+        db.session.commit()
+        return song.to_dict()
 
 # DELETE: song/:songId
 @song_routes.route("/<int:id>", methods=["DELETE"])

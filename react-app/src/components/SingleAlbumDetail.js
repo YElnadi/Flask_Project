@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getOneAlbumThunk } from "../store/albums";
 import { deleteAlbumThunk } from "../store/albums";
 import SongDeleteButton from "./SongDeleteButton";
+import EditSongForm from "./EditSongForm";
 
 const SingleAlbumDetail = () => {
   const { albumId } = useParams();
@@ -51,10 +52,16 @@ const SingleAlbumDetail = () => {
             album &&
             album.songs.length &&
             album.songs.map((song, index) => (
-              <div className="song-details-container" key={song}>
+              <div
+                className="song-details-container"
+                key={`${song}-${song.id}`}
+              >
                 <div className="song-details-title">{song.title}</div>
 
                 <SongDeleteButton song={song} index={index} />
+                {user.id === album.owner_id && (
+                  <EditSongForm buttonClicked={false} song={song} />
+                )}
               </div>
             ))}
           {user && album && user.id === album.owner_id && (
