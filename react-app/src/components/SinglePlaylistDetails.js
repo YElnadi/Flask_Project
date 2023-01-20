@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams, useHistory, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getOnePlaylistThunk, deletePlaylistThunk } from "../store/playlists";
-import EditPlaylistModal from "./EditPlayListModal";
-import EditPlaylistForm from "./EditPlaylistForm";
+// import EditPlaylistModal from "./EditPlayListModal";
+// import EditPlaylistForm from "./EditPlaylistForm";
 
 const SinglePlaylistDetails = () => {
   const { playlistId } = useParams();
@@ -14,15 +14,10 @@ const SinglePlaylistDetails = () => {
   const playlist = useSelector((state) => state.playlists.singlePlaylist);
   console.log("---------- playlist: --------", playlist);
   console.log("---------- user: --------", user);
-  
 
   const getSongs = (playlist) => {
     const songs = playlist.songs !== undefined ? playlist.songs : [];
     return Object.values(songs);
-  };
-  const submit = (e) => {
-    e.preventDefault();
-    history.push(`/playlists/${playlistId}/edit`);
   };
 
   const deletePlaylist = (e) => {

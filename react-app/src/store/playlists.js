@@ -85,14 +85,12 @@ export const editPlaylistThunk = (playlist, id) => async (dispatch) => {
 };
 
 export const deletePlaylistThunk = (playlistId) => async (dispatch) => {
-  const response = await fetch(`/api/playlists/${playlistId}/`, {
+  const response = await fetch(`/api/playlists/${playlistId}`, {
     method: "DELETE",
   });
   if (response.ok) {
-    const data = await response.json();
+    // const data = await response.json();
     dispatch(deletePlaylist(playlistId));
-    return data;
-  } else {
     return response;
   }
 };
@@ -143,6 +141,7 @@ export default function reducer(state = initialState, action) {
       delete newState.allPlaylists[action.playlistId];
       return newState;
     }
+
     default:
       return state;
   }

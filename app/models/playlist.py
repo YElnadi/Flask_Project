@@ -38,7 +38,7 @@ class Playlist(db.Model):
         back_populates="playlists"
     )
 
-    def to_dict(self, user=False, image=False):
+    def to_dict(self):
         playlist = {
             'id':self.id,
             'title':self.title,
