@@ -3,6 +3,7 @@ const GET_ONE_PLAYLIST = "playlists/GET_ONE_PLAYLIST";
 const CREATE_PLAYLIST = "playlists/CREATE_PLAYLIST";
 const EDIT_PLAYLIST = "playlists/EDIT_PLAYLIST";
 const DELETE_PLAYLIST = "/playlists/DELETE_PLAYLIST";
+const LOAD_MY_PLAYLISTS = "playlists/LOAD_MY_PLAYLISTS";
 
 // action creators
 const loadPlaylists = (playlists) => ({
@@ -19,6 +20,14 @@ const createNewPlaylist = (newPlaylist) => ({
   type: CREATE_PLAYLIST,
   newPlaylist,
 });
+
+const loadMyPlaylists = (data) => ({
+  type: LOAD_MY_PLAYLISTS,
+  data,
+});
+// thunk action creator
+// export const loadPlaylistThunk = () => async (dispatch) => {
+//   const response = await fetch("/api/playlists/");
 
 const editPlaylist = (playlist) => ({
   type: EDIT_PLAYLIST,
@@ -95,13 +104,26 @@ export const deletePlaylistThunk = (playlistId) => async (dispatch) => {
   }
 };
 
+export const loadMyPlaylistsThunk = (id) => async (dispatch) => {
+  const response = await fetch(`/api/playlists/user/${id}`);
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(loadMyPlaylists(data));
+  }
+};
+
+
 // main Reducer
-const initialState = { allPlaylists: {}, singlePlaylist: {} };
+const initialState = { allPlaylists: {}, singlePlaylist: {}, myPlaylists: {} };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_PLAYLISTS: {
-      const newState = { allPlaylists: {}, singlePlaylist: {} };
+      const newState = {
+        allPlaylists: {},
+        singlePlaylist: {},
+        myPlaylists: { ...state.myPlaylists },
+      };
       action.playlists.forEach((playlist) => {
         newState.allPlaylists[playlist.id] = playlist;
       });
@@ -111,6 +133,7 @@ export default function reducer(state = initialState, action) {
       const newState = {
         allPlaylists: {},
         singlePlaylist: action.playlist,
+        myPlaylists: { ...state.myPlaylists },
       };
       return newState;
     }
@@ -119,17 +142,35 @@ export default function reducer(state = initialState, action) {
       const newState = {
         ...state,
         allPlaylists: { ...state.allPlaylists },
+        singlePlaylist: action.newPlaylist,
+        myPlaylists: { ...state.myPlaylists },
       };
       newState.allPlaylists[action.newPlaylist.id] = action.newPlaylist;
+      newState.myPlaylists[action.newPlaylist.id] = action.newPlaylist;
+      return newState;
+    }
+    case LOAD_MY_PLAYLISTS: {
+      const newState = {
+        ...state,
+        allPlaylists: { ...state.allPlaylists },
+        singlePlaylist:{...state.singlePlaylist},
+        myPlaylists: {},
+      };
+      action.data.playlists.forEach((playlist) => {
+        newState.myPlaylists[playlist.id] = playlist;
+      });
       return newState;
     }
 
     case EDIT_PLAYLIST: {
       const newState = {
-        // allPlaylists: {...state.allPlaylists},
+        allPlaylists: {...state.allPlaylists},
         singlePlaylist: { ...state.singlePlaylist },
+        myPlaylists:{...state.myPlaylists}
       };
-      newState[action.playlist.id] = action.playlist;
+      newState.allPlaylists[action.playlist.id] = action.playlist;
+      newState.myPlaylists[action.playlist.id] = action.playlist;
+      newState.singlePlaylist=action.playlist;
       return newState;
     }
 
@@ -137,8 +178,10 @@ export default function reducer(state = initialState, action) {
       const newState = {
         allPlaylists: { ...state.allPlaylists },
         singlePlaylist: {},
+        myPlaylists:{...state.myPlaylists}
       };
       delete newState.allPlaylists[action.playlistId];
+      delete newState.myPlaylists[action.playlistId];
       return newState;
     }
 
