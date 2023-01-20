@@ -4,7 +4,7 @@ import { Redirect, useHistory, useParams } from "react-router-dom";
 import { editSongThunk, getOneAlbumThunk } from "../store/albums";
 // buttonOn is an boolean that will determine what this component renders
 
-const EditSongForm = ({ song, buttonClicked }) => {
+const EditSongForm = ({ song, buttonClicked, index }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [buttonOn, setButtonOn] = useState(buttonClicked);
@@ -14,7 +14,7 @@ const EditSongForm = ({ song, buttonClicked }) => {
     e.preventDefault();
     const editedSong = { ...song };
     editedSong.title = title;
-    return dispatch(editSongThunk(editedSong))
+    return dispatch(editSongThunk(editedSong, index))
       .then(dispatch(getOneAlbumThunk(song.album_id)))
       .then(history.push(`/albums/${song.album_id}`))
       .then(setButtonOn(false));

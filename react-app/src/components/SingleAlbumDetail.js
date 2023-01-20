@@ -60,7 +60,11 @@ const SingleAlbumDetail = () => {
 
                 <SongDeleteButton song={song} index={index} />
                 {user.id === album.owner_id && (
-                  <EditSongForm buttonClicked={false} song={song} />
+                  <EditSongForm
+                    buttonClicked={false}
+                    song={song}
+                    index={index}
+                  />
                 )}
               </div>
             ))}
