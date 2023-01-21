@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useHistory, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getOnePlaylistThunk, deletePlaylistThunk } from "../store/playlists";
+import PlayThisButton from './PlayThisButton';
 // import EditPlaylistModal from "./EditPlayListModal";
 // import EditPlaylistForm from "./EditPlaylistForm";
 
@@ -54,6 +55,10 @@ const SinglePlaylistDetails = () => {
       </button> */}
 
       <div>
+        <PlayThisButton
+          id={playlist.id}
+          isPlaylist={true}
+        />
         <p>{playlist.title}</p>
       </div>
       <div>

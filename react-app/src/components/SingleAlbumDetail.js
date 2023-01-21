@@ -6,6 +6,7 @@ import { deleteAlbumThunk } from "../store/albums";
 import SongDeleteButton from "./SongDeleteButton";
 import EditSongForm from "./EditSongForm";
 import AddSongToPlaylistButton from "./AddSongToPlaylistButton";
+import PlayThisButton from "./PlayThisButton";
 
 const SingleAlbumDetail = () => {
   const { albumId } = useParams();
@@ -48,6 +49,7 @@ const SingleAlbumDetail = () => {
             )}
           </div>
           <div>
+            <PlayThisButton id={album.id} isPlaylist={false} />
             <p>{album.title}</p>
           </div>
           {user &&
