@@ -5,7 +5,8 @@ import LogoutButton from "./auth/LogoutButton";
 // import {createNewPlaylistThunk} from '../store/playlists'
 import CreatePlaylist from "./CreatePlaylist";
 import CreateAlbum from "./CreateAlbum";
-import EditPlaylistModal from "./EditPlayListModal";
+// import EditPlaylistModal from "./EditPlayListModal";
+import DemoButton from "./DemoButton";
 
 const NavBar = () => {
   const user = useSelector((state) => state.session.user);
@@ -14,12 +15,17 @@ const NavBar = () => {
     <>
       <div className="top-nav-bar">
         <p>
-          <NavLink to="/sign-up" exact={true} activeClassName="active">
-            Sign Up
-          </NavLink>
-          <NavLink to="/login" exact={true} activeClassName="active">
-            Login
-          </NavLink>
+          {!user && (
+            <>
+              <DemoButton />
+              <NavLink to="/sign-up" exact={true} activeClassName="active">
+                Sign Up
+              </NavLink>
+              <NavLink to="/login" exact={true} activeClassName="active">
+                Login
+              </NavLink>
+            </>
+          )}
         </p>
       </div>
       <div className="side-nav-bar">
