@@ -13,13 +13,13 @@ const UploadSongs = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-   
-    console.log("title:", title);
-    console.log("album_id:", album.id);
+
+    // console.log("title:", title);
+    // console.log("album_id:", album.id);
     formData.append("title", title);
     formData.append("album_id", album.id);
     formData.append("song", song);
-    
+
     // Display the key/value pairs
     for (const pair of formData.entries()) {
       console.log(`${pair[0]}, ${pair[1]}`);

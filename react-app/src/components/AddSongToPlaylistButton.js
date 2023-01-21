@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
 import Select from "react-select";
 import { addSongToPlaylistThunk } from "../store/playlists";
 
@@ -24,23 +23,9 @@ const AddSongToPlaylistButton = ({ song, buttonClicked }) => {
     // Setting the options for the Select Field
     setOptions(updatedOptions);
   }, [dispatch, myPlaylists]);
-  // if (buttonClicked) {
-  //   // instantiates new options for the Select Field
-  //   const updatedOptions = [];
-  //   // Creates datapoints and populates the options
-  //   Object.values(myPlaylists).forEach((playlist) => {
-  //     const newDataPoint = {};
-  //     newDataPoint.value = playlist.id;
-  //     newDataPoint.label = playlist.title;
-  //     updatedOptions.push(newDataPoint);
-  //   });
-  //   // Setting the options for the Select Field
-  //   setOptions(updatedOptions);
-  // }
 
   const handleChange = (option) => {
     setPlaylistIdOption(option.value);
-    console.log(`Option selected:`, playlistIdOption);
   };
 
   const handleSubmit = (e) => {

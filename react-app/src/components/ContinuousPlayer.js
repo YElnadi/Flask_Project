@@ -7,14 +7,14 @@ const Player = () => {
   const queue = useSelector((state) => state.songs.queue);
   const [currentTrack, setTrackIndex] = useState(0);
   const handleClickNext = () => {
-    console.log("click next");
+    // console.log("click next");
     setTrackIndex((currentTrack) =>
       currentTrack < queue.length - 1 ? currentTrack + 1 : 0
     );
   };
 
   const handleEnd = () => {
-    console.log("end");
+    // console.log("end");
     setTrackIndex((currentTrack) =>
       currentTrack < queue.length - 1 ? currentTrack + 1 : 0
     );

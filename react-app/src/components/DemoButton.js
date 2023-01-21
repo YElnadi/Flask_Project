@@ -1,8 +1,7 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "../store/session";
 
 const DemoButton = () => {
-  const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const demoLogin = async (e) => {
     e.preventDefault();

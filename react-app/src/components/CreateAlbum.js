@@ -33,7 +33,6 @@ const CreateAlbum = () => {
     };
 
     return dispatch(createNewAlbumThunk(newAlbum)).then((album) => {
-      console.log("----------------- \n", album);
       const { id } = album;
       history.push(`/albums/${id}`);
     });

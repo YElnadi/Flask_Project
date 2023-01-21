@@ -10,7 +10,7 @@ const EditPlaylistForm = ({ playlistId }) => {
   const sessionUser = useSelector((state) => state.session.user);
 
   const playList = useSelector((state) => state.allPlaylists); // all playlist
-  console.log("playlist: ---------------- \n", playList);
+  // console.log("playlist: ---------------- \n", playList);
   const playlistArray = Object.values(playList);
   // console.log('playlist array: ---------------- \n', playlistArray)
 

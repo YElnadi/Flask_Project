@@ -7,8 +7,6 @@ const CreatePlaylist = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const myPlaylists = useSelector((state) => state.playlists.myPlaylists);
-  const playlists = useSelector((state) => state.playlists.allPlaylists);
-  console.log("$$$$playlist", playlists);
 
   const user = useSelector((state) => state.session.user);
 
@@ -32,7 +30,6 @@ const CreatePlaylist = () => {
       user_id: user.id,
     };
     return dispatch(createNewPlaylistThunk(newPlaylist)).then((playlist) => {
-      console.log("----------------- \n", playlist);
       const { id } = playlist;
       history.push(`/playlists/${id}`);
     });

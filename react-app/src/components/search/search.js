@@ -48,10 +48,10 @@ const Search = () => {
     searchShow,
   ]);
 
-  console.log("users", users);
-  console.log("playlists", playlists);
-  console.log("albums", albums);
-  console.log("songs", songs);
+  // console.log("users", users);
+  // console.log("playlists", playlists);
+  // console.log("albums", albums);
+  // console.log("songs", songs);
 
   const handleInput = (e) => {
     setSearchInput(e.target.value);

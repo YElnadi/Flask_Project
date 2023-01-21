@@ -5,32 +5,25 @@ import "./EditPlaylist.css";
 import * as allPlayListThunks from "../store/playlists";
 
 const EditPlaylistForm = () => {
-  const { playlistId } = useParams()
-  const history = useHistory();
+  const { playlistId } = useParams();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  console.log('session user ------------', sessionUser)
-  const state = useSelector((state) =>
-    console.log("state here: ---------------\n", state)
-  );
+
 
   const playList = useSelector((state) => state.playlists.allPlaylists); // all playlist
-  console.log("playlist: ---------------- \n", playList);
+
 
   const playlistArray = Object.values(playList);
-  console.log("playlist array: ---------------- \n", playlistArray);
-  /////////////////////
+
   const userPlaylist = playlistArray.filter(
     (playlist) => playlist.user_id === sessionUser.id
   );
 
 
-    console.log("userplaylist : ---------------- \n", userPlaylist);
-////////////////////////
   const [image, setImage] = useState("");
   const [errors, setErrors] = useState([]);
-  const [title, setTitle] = useState('please enter title');
-  const [description, setDescription] = useState('please enter discription');
+  const [title, setTitle] = useState("please enter title");
+  const [description, setDescription] = useState("please enter discription");
   const formData = new FormData(); // captures form inputs as kvp-object of form
 
   useEffect(async () => {

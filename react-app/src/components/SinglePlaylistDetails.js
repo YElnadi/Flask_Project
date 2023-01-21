@@ -7,13 +7,10 @@ import { getOnePlaylistThunk, deletePlaylistThunk } from "../store/playlists";
 
 const SinglePlaylistDetails = () => {
   const { playlistId } = useParams();
-  // console.log("#####playlistId:", playlistId);
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const playlist = useSelector((state) => state.playlists.singlePlaylist);
-  console.log("shihi---------- playlist: --------", playlist);
-  console.log("---------- user: --------", user);
 
   const getSongs = (playlist) => {
     const songs = playlist.songs !== undefined ? playlist.songs : [];
