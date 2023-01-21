@@ -151,7 +151,7 @@ export default function reducer(state = initialState, action) {
     }
     case GET_ONE_PLAYLIST: {
       const newState = {
-        allPlaylists: {},
+        allPlaylists: { ...state.allPlaylists },
         singlePlaylist: action.playlist,
         myPlaylists: { ...state.myPlaylists },
       };

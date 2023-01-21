@@ -1,5 +1,7 @@
 import { NavLink, useHistory, Route, Switch } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getOnePlaylistThunk } from "../store/playlists";
 import "./HomePage.css";
 
 const PlaylistCard = ({
@@ -12,9 +14,12 @@ const PlaylistCard = ({
   playlist,
 }) => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const openPlayListCard = (e) => {
-    history.push(`/playlists/${id}`);
+    return dispatch(getOnePlaylistThunk(id)).then(
+      history.push(`/playlists/${id}`)
+    );
   };
 
   return (

@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import * as playlistThunks from "../../store/playlists";
 import "./search.css";
 import songImage from "../../static/images/song-cover.jpeg";
+import { getOneAlbumThunk } from "../../store/albums";
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -105,7 +106,7 @@ const Search = () => {
               (album, index) =>
                 searchShow === true && (
                   <div
-                    onClick={(e) => history.push(`/album/${album.id}`)}
+                    onClick={(e) => history.push(`/albums/${album.id}`)}
                     className="album-cards"
                     key={index}
                   >
@@ -134,7 +135,7 @@ const Search = () => {
               (playlist, index) =>
                 searchShow === true && (
                   <div
-                    onClick={(e) => history.push(`/playlist/${playlist.id}`)}
+                    onClick={(e) => history.push(`/playlists/${playlist.id}`)}
                     className="playlist-cards"
                     key={index}
                   >
@@ -170,7 +171,7 @@ const Search = () => {
               (song, index) =>
                 searchShow === true && (
                   <div
-                    onClick={(e) => history.push(`/song/${song.id}`)}
+                    onClick={(e) => history.push(`/albums/${song.album_id}`)}
                     className="album-cards"
                     key={index}
                   >
