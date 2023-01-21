@@ -39,8 +39,8 @@ const NavBar = () => {
           </NavLink>
         </p>
 
-        {(user && <CreatePlaylist />)} 
-        {(<CreateAlbum />)}
+        {user && <CreatePlaylist />}
+        {user && <CreateAlbum />}
 
         <p>{user !== null && <LogoutButton />}</p>
       </div>

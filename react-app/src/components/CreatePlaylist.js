@@ -6,26 +6,27 @@ import { createNewPlaylistThunk } from "../store/playlists";
 const CreatePlaylist = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-
-  const playlists = useSelector((state) => state.allPlaylists);
+  const myPlaylists = useSelector((state) => state.playlists.myPlaylists);
+  const playlists = useSelector((state) => state.playlists.allPlaylists);
   console.log("$$$$playlist", playlists);
 
   const user = useSelector((state) => state.session.user);
 
-  const [title, setTitle] = useState("My Playlist#");
+  const [title, setTitle] = useState("My Playlist #");
+  const [myPlaylistNumber, setMyPlaylistNumber] = useState(1);
   const [description, setDescription] = useState("");
   const [playlist_img_url, setPlaylistImgUrl] = useState(
     "https://emby.media/community/uploads/inline/355992/5c1cc71abf1ee_genericcoverart.jpg"
   );
 
-  //   useEffect(async()=>{
-  //       await dispatch(createNewPlaylistThunk())
-  //   }, [dispatch])
+  useEffect(() => {
+    setMyPlaylistNumber(Object.values(myPlaylists).length + 1);
+  }, [myPlaylists]);
 
   const submit = async (e) => {
     e.preventDefault();
     const newPlaylist = {
-      title: title,
+      title: `${title}${myPlaylistNumber}`,
       playlist_img_url: playlist_img_url,
       description: description,
       user_id: user.id,
