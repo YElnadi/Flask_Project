@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
+import '../HomePage.css'
 
 const UploadSongs = () => {
   const history = useHistory(); // so that we can redirect after the image upload is successful
@@ -63,8 +64,8 @@ const UploadSongs = () => {
           required
           />
 
-        <input type="file" accept="song/*" onChange={updateSong} />
-        <button type="submit">Submit</button>
+        <input type="file" accept="song/*" onChange={updateSong} className="demo-btn" style={{color:'whitesmoke'}} />
+        <button type="submit" className="demo-btn" style={{color:'whitesmoke'}}>Submit</button>
         {songLoading && <p>Loading...</p>}
       </form>
     </div>

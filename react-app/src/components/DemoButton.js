@@ -9,7 +9,7 @@ const DemoButton = () => {
   };
 
   return (
-    <button onClick={demoLogin} id="demo-button">
+    <button onClick={demoLogin} className='demo-btn' id="demo-button">
       Demo Button
     </button>
   );

@@ -12,7 +12,7 @@ const LogoutButton = () => {
 
   };
 
-  return <button onClick={onLogout}>Logout</button>;
+  return <button onClick={onLogout} style ={{borderRadius:'20px' , padding:10, borderColor:'whitesmoke', backgroundColor:'transparent', color:'whitesmoke', cursor:'pointer'}}>Log out</button>;
 };
 
 export default LogoutButton;

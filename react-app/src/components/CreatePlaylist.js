@@ -37,7 +37,7 @@ const CreatePlaylist = () => {
 
   return (
     <>
-      <div id="create-playlist" onClick={submit}>
+      <div id="create-playlist" onClick={submit} style={{cursor:'pointer'}}>
         Create Playlist
       </div>
     </>

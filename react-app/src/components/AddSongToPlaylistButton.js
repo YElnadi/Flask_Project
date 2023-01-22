@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
 import { addSongToPlaylistThunk } from "../store/playlists";
+import './HomePage.css'
 
 const AddSongToPlaylistButton = ({ song, buttonClicked }) => {
   const [buttonOn, setButtonOn] = useState(buttonClicked);
@@ -52,18 +53,18 @@ const AddSongToPlaylistButton = ({ song, buttonClicked }) => {
   }
   if (!buttonOn) {
     return (
-      <button onClick={renderForm} className="edit-song-button">
+      <button onClick={renderForm}  className="demo-btn" style={{color:'whitesmoke'}}>
         Add Song to Playlist
       </button>
     );
   } else {
     return (
       <form onSubmit={handleSubmit}>
-        <Select options={options} onChange={handleChange} autoFocus={true} />
-        <button onClick={cancel} className="cancel-button">
+        <Select options={options} onChange={handleChange} autoFocus={true}  />
+        <button onClick={cancel} className="demo-btn" style={{color:'whitesmoke'}}>
           Cancel
         </button>
-        <button type="submit" value="Submit">
+        <button type="submit" value="Submit" className="demo-btn" style={{color:'whitesmoke'}}>
           Add to Playlist
         </button>
       </form>

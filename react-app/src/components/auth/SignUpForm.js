@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import '../HomePage.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -91,7 +92,7 @@ const SignUpForm = () => {
             required={true}
             ></input>
         </div>
-        <button type='submit'>Sign Up</button>
+        <button type='submit' className="demo-btn" style={{color:'black'}}>Sign Up</button>
       </form>
     </div>
   );

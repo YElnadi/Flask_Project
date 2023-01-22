@@ -54,8 +54,8 @@ const NavBar = () => {
         {user && <CreateAlbum />}
       </div> */}
 
-      <div className="top-nav-bar">
-        <img
+      <div className="top-nav-bar" >
+        <img 
           src={logo}
           onClick={handleImgClick}
           style={{
@@ -64,6 +64,7 @@ const NavBar = () => {
             left: 30,
             width: 100,
             height: 100,
+            cursor:'pointer'
           }}
         />
 
@@ -75,13 +76,13 @@ const NavBar = () => {
                 <DemoButton />
               </p>
               <p>
-                <NavLink to="/sign-up" exact={true} activeClassName="active">
+                <NavLink to="/sign-up" exact={true} activeClassName="active" className='sign-up-btn'>
                   Sign Up
                 </NavLink>
               </p>
               <p>
-                <NavLink to="/login" exact={true} activeClassName="active">
-                  Login
+                <NavLink to="/login" exact={true} activeClassName="active" className='login-btn'>
+                  Log in
                 </NavLink>
               </p>
             </>

@@ -38,11 +38,19 @@ const SingleAlbumDetail = () => {
       <div className="side-nav-bar">
         <p>
           <NavLink to="/" exact={true} activeClassName="active">
+            <i
+              class="fa-solid fa-house"
+              style={{ color: "#b3b3b3", margin: "0px 10px" }}
+            ></i>
             Home
           </NavLink>
         </p>
         <p>
           <NavLink to="/search" exact={true} activeClassName="active">
+            <i
+              class="fa-solid fa-magnifying-glass"
+              style={{ color: "#b3b3b3", margin: "0px 10px" }}
+            ></i>
             Search
           </NavLink>
         </p>
@@ -61,7 +69,11 @@ const SingleAlbumDetail = () => {
           </div>
           <div>
             {user && album && user.id === album.owner_id && (
-              <button className="delete-album" onClick={deleteAlbum}>
+              <button
+                className="demo-btn"
+                style={{ color: "whitesmoke" }}
+                onClick={deleteAlbum}
+              >
                 Delete
               </button>
             )}
@@ -72,7 +84,6 @@ const SingleAlbumDetail = () => {
           </div>
           {user &&
             album &&
-            album.songs.length &&
             album.songs.map((song, index) => (
               <div
                 className="song-details-container"
@@ -93,8 +104,13 @@ const SingleAlbumDetail = () => {
                 )}
               </div>
             ))}
+          <div>{album.songs.length} Songs</div>
           {user && album && user.id === album.owner_id && (
-            <button className="add-song-button" onClick={addToAlbum}>
+            <button
+              className="demo-btn"
+              style={{ color: "whitesmoke" }}
+              onClick={addToAlbum}
+            >
               Add song
             </button>
           )}
