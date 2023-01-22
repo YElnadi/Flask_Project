@@ -1,5 +1,4 @@
-import { NavLink, useHistory, Route, Switch } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useHistory} from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getOnePlaylistThunk } from "../store/playlists";
 import "./HomePage.css";

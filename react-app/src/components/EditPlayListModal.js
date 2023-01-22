@@ -31,7 +31,7 @@ const EditPlaylistModal = ({ playlistId, playlist, onePlaylist }) => {
           >
             <img
               className="playlist-page-image"
-              src={playlist?.playlist_img_url}
+              src={playlist?.playlist_img_url} alt={'playlist img'}
             />
             {/* <EditPlaylistModal playlistId={playlistId} playlist={playlist} /> */}
           </div>

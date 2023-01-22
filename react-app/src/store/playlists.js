@@ -176,7 +176,8 @@ export default function reducer(state = initialState, action) {
         singlePlaylist: { ...state.singlePlaylist },
         myPlaylists: {},
       };
-      action.data.playlists.forEach((playlist) => {
+      
+      Object.values(action.data.playlists).forEach((playlist) => {
         newState.myPlaylists[playlist.id] = playlist;
       });
       return newState;

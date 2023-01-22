@@ -1,12 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  NavLink,
-  useHistory,
-  Route,
-  Switch,
-  useParams,
-} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import { getOnePlaylistThunk } from "../store/playlists";
 import PlayThisButton from "./PlayThisButton";
 

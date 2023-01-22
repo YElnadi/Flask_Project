@@ -17,11 +17,8 @@ import SingleAlbumDetail from "./components/SingleAlbumDetail";
 import SinglePlaylistDetails from "./components/SinglePlaylistDetails";
 import CreatePlaylist from "./components/CreatePlaylist";
 import Search from "./components/search/search";
-import AudioPlayer from "./components/ContinuousPlayer";
 import Player from "./components/ContinuousPlayer";
-
 import EditPlaylistForm from "./components/EditPlaylistForm";
-import EditPlaylistModal from "./components/EditPlayListModal";
 
 function App() {
   const [loaded, setLoaded] = useState(false);

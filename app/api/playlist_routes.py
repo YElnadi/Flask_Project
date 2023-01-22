@@ -35,7 +35,7 @@ def get_my_playlists(id):
             'playlists': [playlist.to_dict() for playlist in playlists]
         }
     else:
-        return {'playlists': None}
+        return {'playlists': {}}
 
 
 # create a new playlist

@@ -45,6 +45,8 @@ def seed_albums():
     db.session.add(demo_album3)
     db.session.add(demo_album4)
     db.session.add(demo_album5)
+    db.session.add(demo_album6)
+    db.session.add(demo_album7)
     db.session.commit()
 
 def undo_albums():

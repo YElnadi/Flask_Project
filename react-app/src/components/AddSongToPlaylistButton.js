@@ -13,13 +13,16 @@ const AddSongToPlaylistButton = ({ song, buttonClicked }) => {
   useEffect(() => {
     // instantiates new options for the Select Field
     const updatedOptions = [];
-    // Creates datapoints and populates the options
-    Object.values(myPlaylists).forEach((playlist) => {
-      const newDataPoint = {};
-      newDataPoint.value = playlist.id;
-      newDataPoint.label = playlist.title;
-      updatedOptions.push(newDataPoint);
-    });
+    if (Object.values(myPlaylists).length) {
+      // Creates datapoints and populates the options
+      Object.values(myPlaylists).forEach((playlist) => {
+        const newDataPoint = {};
+        newDataPoint.value = playlist.id;
+        newDataPoint.label = playlist.title;
+        updatedOptions.push(newDataPoint);
+      });
+    }
+
     // Setting the options for the Select Field
     setOptions(updatedOptions);
   }, [dispatch, myPlaylists]);
@@ -44,7 +47,9 @@ const AddSongToPlaylistButton = ({ song, buttonClicked }) => {
     e.preventDefault();
     setButtonOn(false);
   };
-
+  if (!Object.values(myPlaylists).length){
+    return null;
+  }
   if (!buttonOn) {
     return (
       <button onClick={renderForm} className="edit-song-button">
@@ -61,7 +66,6 @@ const AddSongToPlaylistButton = ({ song, buttonClicked }) => {
         <button type="submit" value="Submit">
           Add to Playlist
         </button>
-        >
       </form>
     );
   }

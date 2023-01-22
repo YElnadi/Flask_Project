@@ -1,5 +1,4 @@
-import { NavLink, useHistory, Route, Switch } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./HomePage.css";
 
 const AlbumCard = ({

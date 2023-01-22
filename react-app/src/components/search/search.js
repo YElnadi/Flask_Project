@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import * as playlistThunks from "../../store/playlists";
 import "./search.css";
 import songImage from "../../static/images/song-cover.jpeg";
-import { getOneAlbumThunk } from "../../store/albums";
 
 const Search = () => {
   const dispatch = useDispatch();

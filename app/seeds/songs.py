@@ -128,7 +128,7 @@ def seed_songs():
     db.session.add(demo_song7_1)
     db.session.add(demo_song7_2)
     db.session.commit()
-    songs = [demo_song1_1, demo_song1_2, demo_song1_3, demo_song2_1, demo_song2_2, demo_song2_3, demo_song3_1, demo_song3_2, demo_song3_3, demo_song4_1, demo_song4_2, demo_song4_3, demo_song5_1, demo_song5_2,demo_song5_3,demo_song6_1,demo_song6_2,demo_song6_3,demo_song7_1,demo_song7_2]
+    songs = [demo_song1_1, demo_song1_2, demo_song1_3, demo_song2_1, demo_song2_2, demo_song2_3, demo_song3_1, demo_song3_2, demo_song3_3, demo_song4_1, demo_song4_2, demo_song4_3, demo_song5_1, demo_song5_2,demo_song5_3, demo_song6_1, demo_song6_2, demo_song6_3, demo_song7_1,demo_song7_2]
     return songs
 
 def undo_songs():

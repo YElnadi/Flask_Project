@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory, useParams } from "react-router-dom";
+import { useDispatch} from "react-redux";
+import {useHistory} from "react-router-dom";
 import { editSongThunk, getOneAlbumThunk } from "../store/albums";
 // buttonOn is an boolean that will determine what this component renders
 

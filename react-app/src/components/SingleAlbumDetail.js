@@ -63,16 +63,16 @@ const SingleAlbumDetail = () => {
                 <div className="song-details-title">{song.title}</div>
 
                 <SongDeleteButton song={song} index={index} />
-                {user.id === album.owner_id && (
+                {user.id === album.owner_id && 
                   <EditSongForm
                     buttonClicked={false}
                     song={song}
                     index={index}
                   />
-                )}
-                {user.id && Object.values(myPlaylists).length && (
+                }
+                {user.id  && 
                   <AddSongToPlaylistButton buttonClicked={false} song={song} />
-                )}
+                }
               </div>
             ))}
           {user && album && user.id === album.owner_id && (

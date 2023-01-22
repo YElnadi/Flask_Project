@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import { loadAlbumsThunk } from "../store/albums";
 import { loadPlaylistThunk, loadMyPlaylistsThunk } from "../store/playlists";
 import SpotCards from "./SpotCards";

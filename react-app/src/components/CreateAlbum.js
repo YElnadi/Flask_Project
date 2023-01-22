@@ -14,7 +14,7 @@ const CreateAlbum = () => {
     "https://emby.media/community/uploads/inline/355992/5c1cc71abf1ee_genericcoverart.jpg"
   );
   useEffect(() => {
-    let count = 0;
+    let count = 1;
     Object.values(albums).forEach((album) => {
       if (album.owner_id === user.id) {
         count++;

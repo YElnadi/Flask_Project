@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteSongThunk } from "../store/albums";

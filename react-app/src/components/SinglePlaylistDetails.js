@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useParams, useHistory, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getOnePlaylistThunk, deletePlaylistThunk } from "../store/playlists";
-import PlayThisButton from './PlayThisButton';
+import PlayThisButton from "./PlayThisButton";
 // import EditPlaylistModal from "./EditPlayListModal";
 // import EditPlaylistForm from "./EditPlaylistForm";
 
@@ -32,14 +32,10 @@ const SinglePlaylistDetails = () => {
       <p>Your are in playlist</p>
       {/* <button className="edit-playlist" onClick={submit}>Edit Playlist</button> */}
       <div>
-        <NavLink to={`/playlists/${playlistId}/edit`}>
-          {/* <EditPlaylistForm /> */}
-          <img
-            src={playlist.playlist_img_url}
-            style={{ width: 200, height: 200 }}
-          />
-          edit
-        </NavLink>
+        <img
+          src={playlist.playlist_img_url}
+          style={{ width: 200, height: 200 }}
+        />
       </div>
 
       <div>
@@ -55,10 +51,7 @@ const SinglePlaylistDetails = () => {
       </button> */}
 
       <div>
-        <PlayThisButton
-          id={playlist.id}
-          isPlaylist={true}
-        />
+        <PlayThisButton id={playlist.id} isPlaylist={true} />
         <p>{playlist.title}</p>
       </div>
       <div>
