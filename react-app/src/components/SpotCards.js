@@ -28,7 +28,7 @@ const SpotCards = ({ title, image_url, maker, id, description }) => {
         {description !== undefined && (
           <div className="card-playlist-description">{description}</div>
         )}
-        <div className="card-maker">{maker}</div>
+        <div className="card-maker">by {maker}</div>
       </div>
     </>
   );
