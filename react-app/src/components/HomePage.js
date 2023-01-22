@@ -37,7 +37,7 @@ const HomePage = () => {
             <NavLink to="/" exact={true} activeClassName="active">
               <i
                 class="fa-solid fa-house"
-                style={{ color: "#b3b3b3", margin: "0px 10px" }}
+                style={{ color: "#b3b3b3", margin: "0px 10px", }}
               ></i>
               Home
             </NavLink>
@@ -62,7 +62,7 @@ const HomePage = () => {
         {/* -------- album --------*/}
         <div>
           <div>
-            <h1 className="feature-title">Spoti8 Albums</h1>
+            <h1 className="feature-title" style={{color:'white'}} >Spoti8 Albums</h1>
             <div className="feature-card">
               {Object.values(allAlbums).map((album) => (
                 <SpotCards

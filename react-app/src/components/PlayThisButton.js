@@ -19,7 +19,7 @@ const PlayThisButton = ({ id, isPlaylist }) => {
   };
 
   return (
-    <>{user && <i className="fa-regular fa-circle-play" onClick={submit}></i>}</>
+    <>{user && <i className="fa-regular fa-circle-play" style={{fontSize: 25}} onClick={submit}></i>}</>
   );
 };
 

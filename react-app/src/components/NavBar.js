@@ -68,13 +68,13 @@ const NavBar = () => {
                 <DemoButton />
               </p>
               <p>
-                <NavLink to="/sign-up" exact={true} activeClassName="active">
+                <NavLink to="/sign-up" exact={true} activeClassName="active" className='sign-up-btn'>
                   Sign Up
                 </NavLink>
               </p>
               <p>
-                <NavLink to="/login" exact={true} activeClassName="active">
-                  Login
+                <NavLink to="/login" exact={true} activeClassName="active" className='login-btn'>
+                  Log in
                 </NavLink>
               </p>
             </>

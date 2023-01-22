@@ -52,52 +52,67 @@ const SingleAlbumDetail = () => {
 
       {Object.values(album).length && (
         <div className="album-page-detail">
-          <h1>You are in the album</h1>
-          <div>
-            <img
-              src={album.album_img_url}
-              style={{ width: 200, height: 200 }}
-            />
+          <div style={{ display: "flex", gap: "10px" }}>
+            <div>
+              <img
+                src={album.album_img_url}
+                style={{ width: 200, height: 200 }}
+              />
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                marginTop: "20px",
+                rowGap: "20px",
+              }}
+            >
+              <div>Album</div>
+              <div style={{ fontSize: "50px" }}>{album.title}</div>
+              <div>
+                {user && album && user.id === album.owner_id && (
+                  <button className="delete-album-btn" onClick={deleteAlbum}>
+                    Delete
+                  </button>
+                )}
+              </div>
+            </div>
           </div>
-          <div>
+          <div style={{display:'flex', paddingBottom:'20px', paddingTop:'10px'}}>
+            <div>
+              <PlayThisButton id={album.id} isPlaylist={false} />
+            </div>
+            {user &&
+              album &&
+              album.songs.map((song, index) => (
+                <div
+                  className="song-details-container"
+                  key={`${song}-${song.id}`}
+                >
+                  <div className="song-details-title">{song.title}</div>
+
+                  <SongDeleteButton song={song} index={index} />
+                  {user.id === album.owner_id && (
+                    <EditSongForm
+                      buttonClicked={false}
+                      song={song}
+                      index={index}
+                    />
+                  )}
+                  {user.id && (
+                    <AddSongToPlaylistButton
+                      buttonClicked={false}
+                      song={song}
+                    />
+                  )}
+                </div>
+              ))}
             {user && album && user.id === album.owner_id && (
-              <button className="delete-album" onClick={deleteAlbum}>
-                Delete
+              <button className="add-song-btn" onClick={addToAlbum}>
+                Add song
               </button>
             )}
           </div>
-          <div>
-            <PlayThisButton id={album.id} isPlaylist={false} />
-            <p>{album.title}</p>
-          </div>
-          {user &&
-            album &&
-            album.songs.length &&
-            album.songs.map((song, index) => (
-              <div
-                className="song-details-container"
-                key={`${song}-${song.id}`}
-              >
-                <div className="song-details-title">{song.title}</div>
-
-                <SongDeleteButton song={song} index={index} />
-                {user.id === album.owner_id && 
-                  <EditSongForm
-                    buttonClicked={false}
-                    song={song}
-                    index={index}
-                  />
-                }
-                {user.id  && 
-                  <AddSongToPlaylistButton buttonClicked={false} song={song} />
-                }
-              </div>
-            ))}
-          {user && album && user.id === album.owner_id && (
-            <button className="add-song-button" onClick={addToAlbum}>
-              Add song
-            </button>
-          )}
         </div>
       )}
     </div>

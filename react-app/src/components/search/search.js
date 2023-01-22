@@ -67,15 +67,23 @@ const Search = () => {
   };
 
   return (
-    <div className="main-container" style={{ marginTop: 80 }}>
+    <div className="main-container" style={{ marginTop: 80, marginBottom:80 }}>
       <div className="side-nav-bar">
         <p>
           <NavLink to="/" exact={true} activeClassName="active">
+            <i
+              class="fa-solid fa-house"
+              style={{ color: "#b3b3b3", margin: "0px 10px" }}
+            ></i>
             Home
           </NavLink>
         </p>
         <p>
           <NavLink to="/search" exact={true} activeClassName="active">
+            <i
+              class="fa-solid fa-magnifying-glass"
+              style={{ color: "#b3b3b3", margin: "0px 10px" }}
+            ></i>
             Search
           </NavLink>
         </p>
@@ -90,7 +98,7 @@ const Search = () => {
           onChange={handleInput}
           value={searchInput}
           style={{
-            marginLeft: "4%",
+            marginLeft: "50px",
             marginTop: "20px",
             paddingLeft: "35px",
             borderRadius: "25px",
@@ -110,7 +118,7 @@ const Search = () => {
         {/*---------------- album div -----------------*/}
 
         <div className="album-container">
-          <h1 hidden={searchShow ? false : true}> Albums </h1>
+          <h1 hidden={searchShow ? false : true} style={{marginLeft:'50px'}}> Albums </h1>
           <div className="search-results-container">
             {albums
               .filter((album) => {
@@ -139,7 +147,7 @@ const Search = () => {
 
           {/*---------------- playlist div -----------------*/}
 
-          <h1 hidden={searchShow ? false : true}> Playlists </h1>
+          <h1 hidden={searchShow ? false : true} style={{marginLeft:'50px'}}> Playlists </h1>
           <div className="search-results-container">
             {playlists
               .filter((playlist) => {
@@ -179,7 +187,7 @@ const Search = () => {
 
           {/*---------------- song div -----------------*/}
 
-          <h1 hidden={searchShow ? false : true}> Songs </h1>
+          <h1 hidden={searchShow ? false : true} style={{marginLeft:'50px'}}> Songs </h1>
           <div className="search-results-container">
             {songs
               .filter((song) => {

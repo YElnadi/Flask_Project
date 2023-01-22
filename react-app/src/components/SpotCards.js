@@ -14,18 +14,24 @@ const SpotCards = ({ title, image_url, maker, id, description }) => {
       <div className="single-card-container">
         <div className="image-container">
           <img
-            style={{ width: 200, height: 200 }}
+            style={{ width: 350, height: 200}}
             src={image_url}
             onClick={openCard}
             alt="This should be the Album img"
           ></img>
         </div>
-        <div className="card-title">{title}</div>
-        <PlayThisButton id={id} isPlaylist={false} />
-        {description !== undefined && (
+        <div style={{paddingBottom:55}}>
+          <div style={{ display: "flex", flexDirection:'column', lineHeight:0 }}>
+            <div className="card-title"  >{title} </div>
+            <div style={{ display:'flex', justifyContent: "flex-end" }}>
+              <PlayThisButton id={id} isPlaylist={false} />
+            </div>
+          </div>
+          {description !== undefined && (
           <div className="card-playlist-description">{description}</div>
         )}
-        <div className="card-maker">by {maker}</div>
+          <div className="card-maker">by {maker}</div>
+        </div>
       </div>
     </>
   );
