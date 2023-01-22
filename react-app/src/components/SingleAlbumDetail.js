@@ -34,7 +34,7 @@ const SingleAlbumDetail = () => {
   }, [dispatch, albumId]);
 
   return (
-    <div className="detail-page">
+    <div className="homepage-below-nav">
       <div className="side-nav-bar">
         <p>
           <NavLink to="/" exact={true} activeClassName="active">

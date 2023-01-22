@@ -40,67 +40,68 @@ const SinglePlaylistDetails = () => {
           style={{ width: 200, height: 200 }}
         />
       </div> */}
-
-      <div className="detail-page">
-        {/* <div className="side-nav-bar">
-          <p>
-            <NavLink to="/" exact={true} activeClassName="active">
-              Home
-            </NavLink>
-          </p>
-          <p>
-            <NavLink to="/search" exact={true} activeClassName="active">
-              Search
-            </NavLink>
-          </p>
-          <p>{user && <CreatePlaylist />}</p>
-          <p>{user && <CreateAlbum />}</p>
-        </div> */}
-
-        <div className="playlist-page-detail">
-          <h1>Your are in playlist</h1>
-          {/* <button className="edit-playlist" onClick={submit}>Edit Playlist</button> */}
-          <div>
-            {/* <EditPlaylistForm /> */}
-            <img
-              src={playlist.playlist_img_url}
-              style={{ width: 200, height: 200 }}
-            />
+      <div className='homepage-below-nav'>
+        <div className="detail-page" >
+          <div className="side-nav-bar">
+            <p>
+              <NavLink to="/" exact={true} activeClassName="active">
+                Home
+              </NavLink>
+            </p>
+            <p>
+              <NavLink to="/search" exact={true} activeClassName="active">
+                Search
+              </NavLink>
+            </p>
+            <p>{user && <CreatePlaylist />}</p>
+            <p>{user && <CreateAlbum />}</p>
           </div>
 
-          <div>
-            {user && playlist && user.id === playlist.user_id && (
-              <button className="delete-playlist" onClick={deletePlaylist}>
-                Delete
-              </button>
-            )}
-          </div>
+          <div className="playlist-page-detail">
+            <h1>Your are in playlist</h1>
+            {/* <button className="edit-playlist" onClick={submit}>Edit Playlist</button> */}
+            <div>
+              {/* <EditPlaylistForm /> */}
+              <img
+                src={playlist.playlist_img_url}
+                style={{ width: 200, height: 200 }}
+              />
+            </div>
 
-          <div>
-            <PlayThisButton id={playlist.id} isPlaylist={true} />
+            <div>
+              {user && playlist && user.id === playlist.user_id && (
+                <button className="delete-playlist" onClick={deletePlaylist}>
+                  Delete
+                </button>
+              )}
+            </div>
 
-            {/* <button style={{ width: 50 }} onClick={deletePlaylist}>
+            <div>
+              <PlayThisButton id={playlist.id} isPlaylist={true} />
+
+              {/* <button style={{ width: 50 }} onClick={deletePlaylist}>
           delete
         </button> */}
 
-            <div>
-              <p>{playlist.title}</p>
-            </div>
-            <div>
-              <p>{playlist.description}</p>
-            </div>
-            <div>
-              <p>{getSongs(playlist).length} songs</p>
-            </div>
-            <div style={{ whiteSpace: "pre-line" }}>
-              {getSongs(playlist)
-                .map((song) => song.title)
-                .join("\n")}
+              <div>
+                <p>{playlist.title}</p>
+              </div>
+              <div>
+                <p>{playlist.description}</p>
+              </div>
+              <div>
+                <p>{getSongs(playlist).length} songs</p>
+              </div>
+              <div style={{ whiteSpace: "pre-line" }}>
+                {getSongs(playlist)
+                  .map((song) => song.title)
+                  .join("\n")}
+              </div>
             </div>
           </div>
         </div>
+        <div style={{ padding: 50 }}></div>
       </div>
-      <div style={{ padding: 50 }}></div>
     </>
   );
 };

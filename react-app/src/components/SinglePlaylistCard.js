@@ -27,7 +27,7 @@ const SinglePlaylistCard = ({ playlist }) => {
       </div>
       <div>{playlist.title}</div>
 
-      <PlayThisButton id={playlist.id} isPlaylist={true} />
+      {/* <PlayThisButton id={playlist.id} isPlaylist={true} /> */}
 
       <div>by {playlist.user} </div>
     </div>

@@ -21,7 +21,7 @@ const SpotCards = ({ title, image_url, maker, id, description }) => {
           ></img>
         </div>
         <div className="card-title">{title}</div>
-        <PlayThisButton id={id} isPlaylist={false} />
+        {/* <PlayThisButton id={id} isPlaylist={false} /> */}
         {description !== undefined && (
           <div className="card-playlist-description">{description}</div>
         )}

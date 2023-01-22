@@ -5,15 +5,16 @@ const PlayThisButton = ({ id, isPlaylist }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const albums = useSelector((state) => state.albums);
-  const playlists = useSelector((state) => state.playlists);
+  const playlist = useSelector((state) => state.playlists.singlePlaylist);
+  const album = useSelector (state => state.albums.singleAlbum)
 
   const submit = async (e) => {
     e.preventDefault();
     if (isPlaylist) {
-      const songs = playlists.allPlaylists[id].songs;
+      const songs = playlist.songs;
       await dispatch(loadSongsThunk(songs));
     } else {
-      const songs = albums.allAlbums[id].songs;
+      const songs = album.songs;
       await dispatch(loadSongsThunk(songs));
     }
   };

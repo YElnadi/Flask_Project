@@ -8,6 +8,9 @@ Create Date: 2023-01-15 16:19:12.046833
 from alembic import op
 import sqlalchemy as sa
 
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
 revision = '8d9b8bd15152'
@@ -50,6 +53,12 @@ def upgrade():
     op.create_foreign_key(None, 'songs', 'albums', ['album_id'], ['id'])
     # op.drop_column('songs', 'url')
     # ### end Alembic commands ###
+    if environment == "production":
+            op.execute(f"ALTER TABLE albums SET SCHEMA {SCHEMA};")
+            op.execute(f"ALTER TABLE playlists SET SCHEMA {SCHEMA};")
+            op.execute(f"ALTER TABLE playlist_songs SET SCHEMA {SCHEMA};")
+
+
 
 
 def downgrade():

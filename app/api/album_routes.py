@@ -41,13 +41,13 @@ def new_album():
     form['csrf_token'].data = request.cookies['csrf_token']
     # form.data["user_id"] = user_id
     if form.validate_on_submit():
-      new_Album = Album()
-      form.populate_obj(new_Album)
-      new_Album.album_img_url = form.data['album_img_url'] if form.data['album_img_url'] else '/static/images/unknown-album-cover.jpeg'
+      new_album = Album()
+      form.populate_obj(new_album)
+      new_album.album_img_url = form.data['album_img_url'] if form.data['album_img_url'] else '/static/images/unknown-album-cover.jpeg'
 
-      db.session.add(new_Album)
+      db.session.add(new_album)
       db.session.commit()
-      return new_Album.to_dict()
+      return new_album.to_dict()
     else:
       return form.errors
 

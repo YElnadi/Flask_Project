@@ -180,7 +180,7 @@ const Search = () => {
           {/*---------------- song div -----------------*/}
 
           <h1 hidden={searchShow ? false : true}> Songs </h1>
-          <div className="search-results-container">
+          <div className="search-results-container" style={{paddingBottom:80}}>
             {songs
               .filter((song) => {
                 if (searchInput === "") {

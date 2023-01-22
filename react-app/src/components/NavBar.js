@@ -38,7 +38,7 @@ const NavBar = () => {
         </p>
       </div> */}
 
-      <div className="side-nav-bar">
+      {/* <div className="side-nav-bar">
         <p>
           <NavLink to="/" exact={true} activeClassName="active">
             Home
@@ -52,7 +52,7 @@ const NavBar = () => {
 
         {user && <CreatePlaylist />}
         {user && <CreateAlbum />}
-      </div>
+      </div> */}
 
       <div className="top-nav-bar">
         <img
