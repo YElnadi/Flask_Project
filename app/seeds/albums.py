@@ -26,6 +26,16 @@ def seed_albums():
        album_img_url = 'https://cdns-images.dzcdn.net/images/cover/d8f64e0a4a6f4e7602d5207e30af4f2d/264x264.jpg',
        title = 'Cairokee'
     )
+    demo_album6 = Album(
+       artist ='Polyphia',
+       album_img_url = 'https://images.genius.com/c90b020b73f3efbaa7b151a37730a571.1000x1000x1.png',
+       title = 'Remember You Will Die'
+    )
+    demo_album7 = Album(
+       artist ='Sachet Tandon',
+       album_img_url = 'https://pbs.twimg.com/profile_images/1135137634580279296/s6iPVjn0_400x400.jpg',
+       title = 'Malang'
+    )
 
 
 

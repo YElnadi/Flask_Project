@@ -79,6 +79,32 @@ def seed_songs():
         album_id = 5,
         song_url = 'https://spotify8bucket.s3.amazonaws.com/141ea88006c84c5ea2ff259f5d4ed158.mp3'
     )
+    demo_song6_1 = Song(
+        title = 'The Audacity',
+        album_id = 6,
+        song_url = 'https://spotify8bucket.s3.amazonaws.com/f29845eab4044325a5b6c385f64c6d74.mp3'
+    )
+    demo_song6_2 = Song(
+        title = 'Genesis',
+        album_id = 6,
+        song_url = 'https://spotify8bucket.s3.amazonaws.com/32d2b4be2e1b49cdaa15ee4cdc4d3cf9.mp3'
+    ) 
+    demo_song6_3 = Song(
+        title = 'Playing God',
+        album_id = 6,
+        song_url = 'https://spotify8bucket.s3.amazonaws.com/4dad9b32291d4eb1984abf6d0f5d095d.mp3'
+    )
+    demo_song7_1 = Song(
+        title = 'Humraah',
+        album_id = 7,
+        song_url = 'https://spotify8bucket.s3.amazonaws.com/ab8151f7e86043f78bdba4410e5075c4.mp3'
+    )
+    demo_song7_2 = Song(
+        title = 'Malang',
+        album_id = 7,
+        song_url = 'https://spotify8bucket.s3.amazonaws.com/4217a2f8e33e4e12a240c9ebde3865de.mp3'
+    )
+   
 
 
     db.session.add(demo_song1_1)
@@ -96,8 +122,13 @@ def seed_songs():
     db.session.add(demo_song5_1)
     db.session.add(demo_song5_2)
     db.session.add(demo_song5_3)
+    db.session.add(demo_song6_1)
+    db.session.add(demo_song6_2)
+    db.session.add(demo_song6_3)
+    db.session.add(demo_song7_1)
+    db.session.add(demo_song7_2)
     db.session.commit()
-    songs = [demo_song1_1, demo_song1_2, demo_song1_3, demo_song2_1, demo_song2_2, demo_song2_3, demo_song3_1, demo_song3_2, demo_song3_3, demo_song4_1, demo_song4_2, demo_song4_3, demo_song5_1, demo_song5_2,demo_song5_3]
+    songs = [demo_song1_1, demo_song1_2, demo_song1_3, demo_song2_1, demo_song2_2, demo_song2_3, demo_song3_1, demo_song3_2, demo_song3_3, demo_song4_1, demo_song4_2, demo_song4_3, demo_song5_1, demo_song5_2,demo_song5_3,demo_song6_1,demo_song6_2,demo_song6_3,demo_song7_1,demo_song7_2]
     return songs
 
 def undo_songs():
