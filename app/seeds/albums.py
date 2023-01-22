@@ -2,34 +2,34 @@ from app.models import db, environment, SCHEMA, Album
 
 def seed_albums():
     demo_album1 = Album(
-       artist ='Demo1',
-       album_img_url = 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/artistic-album-cover-design-template-d12ef0296af80b58363dc0deef077ecc_screen.jpg?ts=1561488440',
-       title = 'PAIN1'
+       artist ='Dean Martin',
+       album_img_url = 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a3/Dean_Martin%2C_Once_In_A_While.jpeg/220px-Dean_Martin%2C_Once_In_A_While.jpeg',
+       title = 'Once In A While'
     )
     demo_album2 = Album(
-       artist ='Demo2',
-       album_img_url = 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/artistic-album-cover-design-template-d12ef0296af80b58363dc0deef077ecc_screen.jpg?ts=1561488440',
-       title = 'PAIN2'
+       artist ='A Tribe Called Quest',
+       album_img_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVqoqpnR--NDmuH5yL80vVSMrY75PTCRWioQ&usqp=CAU',
+       title = 'People\'s Instinctive Travels'
     )
     demo_album3 = Album(
-       artist ='Demo3',
-       album_img_url = 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/artistic-album-cover-design-template-d12ef0296af80b58363dc0deef077ecc_screen.jpg?ts=1561488440',
-       title = 'PAIN3'
+       artist ='Adele',
+       album_img_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ2PrpFQGev0A3nzpkSRMGqODRU6iV_hXgng&usqp=CAU',
+       title = 'Adele25'
     )
     demo_album4 = Album(
-       artist ='Demo4',
-       album_img_url = 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/artistic-album-cover-design-template-d12ef0296af80b58363dc0deef077ecc_screen.jpg?ts=1561488440',
-       title = 'PAIN4'
+       artist ='Jimi Hendrix',
+       album_img_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlDAXcCGt8wkQXV5_y2PX2tAp5AIj00Sbq2g&usqp=CAU',
+       title = 'Axis: Bold as Love'
     )
     demo_album5 = Album(
-       artist ='Demo5',
-       album_img_url = 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/artistic-album-cover-design-template-d12ef0296af80b58363dc0deef077ecc_screen.jpg?ts=1561488440',
-       title = 'PAIN5'
+       artist ='Cairokee',
+       album_img_url = 'https://cdns-images.dzcdn.net/images/cover/d8f64e0a4a6f4e7602d5207e30af4f2d/264x264.jpg',
+       title = 'Cairokee'
     )
 
 
 
-    
+
     db.session.add(demo_album1)
     db.session.add(demo_album2)
     db.session.add(demo_album3)
@@ -42,6 +42,5 @@ def undo_albums():
         db.session.execute(f"TRUNCATE table {SCHEMA}.albums RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM albums")
-        
-    db.session.commit()
 
+    db.session.commit()
