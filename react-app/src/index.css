@@ -1,10 +1,19 @@
 /* TODO Add site wide styles */
 #root{
-    background-color:#514e4e ;
+    background-color:rgb(40, 48, 96) ;
     color:whitesmoke;
     display:flex;
     flex-direction: column;
+    top: 0px; 
+    left: 0px; 
+    font-family: Gotham;
 }
+
+
+/* *{
+  font-family: Circular;
+  /* -ms-overflow-style: none; */
+/* } */ 
 
 .top-nav-bar{
     display:'flex';

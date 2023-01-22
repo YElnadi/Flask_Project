@@ -19,7 +19,7 @@ import CreatePlaylist from "./components/CreatePlaylist";
 import Search from "./components/search/search";
 import AudioPlayer from "./components/ContinuousPlayer";
 import Player from "./components/ContinuousPlayer";
-
+import "./App.css";
 import EditPlaylistForm from "./components/EditPlaylistForm";
 import EditPlaylistModal from "./components/EditPlayListModal";
 
