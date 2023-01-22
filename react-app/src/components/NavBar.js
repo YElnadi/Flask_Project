@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
 // import {createNewPlaylistThunk} from '../store/playlists'
 import CreatePlaylist from "./CreatePlaylist";
@@ -13,6 +13,12 @@ import logo from "../static/images/spoti8-logo.png";
 
 const NavBar = () => {
   const user = useSelector((state) => state.session.user);
+  const history = useHistory();
+
+  const handleImgClick = (e) => {
+    e.preventDefault();
+    history.push("/");
+  };
 
   return (
     <>
@@ -51,6 +57,7 @@ const NavBar = () => {
       <div className="top-nav-bar">
         <img
           src={logo}
+          onClick={handleImgClick}
           style={{
             position: "fixed",
             top: 15,

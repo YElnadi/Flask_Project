@@ -22,14 +22,16 @@ const Player = () => {
   };
   if (queue.length) {
     return (
-      <AudioPlayer
-        volume="0.5"
-        src={queue[currentTrack].song_url}
-        showSkipControls
-        onClickNext={handleClickNext}
-        onEnded={handleEnd}
-        // Try other props!
-      />
+      <div className="audio-player">
+        <AudioPlayer
+          volume="0.5"
+          src={queue[currentTrack].song_url}
+          showSkipControls
+          onClickNext={handleClickNext}
+          onEnded={handleEnd}
+          // Try other props!
+        />
+      </div>
     );
   } else {
     return (

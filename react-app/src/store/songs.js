@@ -1,8 +1,6 @@
 const LOAD_SONGS = "songs/LOAD_SONGS";
 
-
 // ACTION CREATOR
-
 const loadSongs = (songs) => ({
   type: LOAD_SONGS,
   songs,
@@ -27,6 +25,7 @@ export default function reducer(state = initialState, action) {
       });
       return newState;
     }
+
     default:
       return state;
   }

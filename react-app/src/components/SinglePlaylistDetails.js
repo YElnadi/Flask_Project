@@ -100,7 +100,7 @@ const SinglePlaylistDetails = () => {
           </div>
         </div>
       </div>
-      <div style={{ padding: 50 }}>sdfk</div>
+      <div style={{ padding: 50 }}></div>
     </>
   );
 };

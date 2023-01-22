@@ -28,7 +28,7 @@ const UploadSongs = () => {
     // aws uploads can be a bit slow—displaying
     // some sort of loading message is a good idea
     setSongLoading(true);
-
+    
     const res = await fetch("/api/songs", {
       method: "POST",
       body: formData,
@@ -52,20 +52,22 @@ const UploadSongs = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        className="title-input"
-        type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="Title"
-        required
-      />
+    <div style={{padding: "200px 200px"}}>
+      <form onSubmit={handleSubmit}>
+        <input
+          className="title-input"
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Title"
+          required
+          />
 
-      <input type="file" accept="song/*" onChange={updateSong} />
-      <button type="submit">Submit</button>
-      {songLoading && <p>Loading...</p>}
-    </form>
+        <input type="file" accept="song/*" onChange={updateSong} />
+        <button type="submit">Submit</button>
+        {songLoading && <p>Loading...</p>}
+      </form>
+    </div>
   );
 };
 
