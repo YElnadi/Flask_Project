@@ -18,7 +18,7 @@ const SongDeleteButton = ({ song, index }) => {
   return (
     <>
       {user && album && album.owner_id === user.id && (
-        <button onClick={deleteSong} className="delete-song-btn">
+        <button onClick={deleteSong} className="demo-btn" style={{color:'whitesmoke'}}>
           Delete
         </button>
       )}

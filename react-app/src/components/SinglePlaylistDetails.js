@@ -45,11 +45,19 @@ const SinglePlaylistDetails = () => {
           <div className="side-nav-bar">
             <p>
               <NavLink to="/" exact={true} activeClassName="active">
+              <i
+                class="fa-solid fa-house"
+                style={{ color: "#b3b3b3", margin: "0px 10px" }}
+              ></i>
                 Home
               </NavLink>
             </p>
             <p>
               <NavLink to="/search" exact={true} activeClassName="active">
+              <i
+                class="fa-solid fa-magnifying-glass"
+                style={{ color: "#b3b3b3", margin: "0px 10px" }}
+              ></i>
                 Search
               </NavLink>
             </p>
@@ -70,7 +78,7 @@ const SinglePlaylistDetails = () => {
 
             <div>
               {user && playlist && user.id === playlist.user_id && (
-                <button className="delete-playlist" onClick={deletePlaylist}>
+                <button  className="demo-btn" style={{color:'whitesmoke'}} onClick={deletePlaylist}>
                   Delete
                 </button>
               )}

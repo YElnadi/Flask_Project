@@ -32,7 +32,7 @@ const EditSongForm = ({ song, buttonClicked, index }) => {
 
   if (!buttonOn) {
     return (
-      <button onClick={renderForm} className="edit-song-button">
+      <button onClick={renderForm} className="demo-btn" style={{color:'whitesmoke'}} >
         Edit Song Title
       </button>
     );
@@ -47,10 +47,10 @@ const EditSongForm = ({ song, buttonClicked, index }) => {
           placeholder="Title"
           required
         />
-        <button onClick={cancel} className="cancel-button">
+        <button onClick={cancel} className="demo-btn" style={{color:'whitesmoke'}}>
           Cancel
         </button>
-        <button className="edit-song-title-save" type="submit">
+        <button className="demo-btn" style={{color:'whitesmoke'}} type="submit">
           Save
         </button>
       </form>

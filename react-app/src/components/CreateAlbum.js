@@ -41,7 +41,7 @@ const CreateAlbum = () => {
   return (
     <>
       {user && (
-        <div id="create-album" onClick={submit}>
+        <div id="create-album" onClick={submit} style={{cursor:'pointer'}}>
           Create Album
         </div>
       )}

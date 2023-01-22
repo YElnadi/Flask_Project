@@ -71,11 +71,19 @@ const Search = () => {
       <div className="side-nav-bar">
         <p>
           <NavLink to="/" exact={true} activeClassName="active">
+            <i
+              class="fa-solid fa-house"
+              style={{ color: "#b3b3b3", margin: "0px 10px" }}
+            ></i>
             Home
           </NavLink>
         </p>
         <p>
           <NavLink to="/search" exact={true} activeClassName="active">
+            <i
+              class="fa-solid fa-magnifying-glass"
+              style={{ color: "#b3b3b3", margin: "0px 10px" }}
+            ></i>
             Search
           </NavLink>
         </p>
@@ -180,7 +188,10 @@ const Search = () => {
           {/*---------------- song div -----------------*/}
 
           <h1 hidden={searchShow ? false : true}> Songs </h1>
-          <div className="search-results-container" style={{paddingBottom:80}}>
+          <div
+            className="search-results-container"
+            style={{ paddingBottom: 80 }}
+          >
             {songs
               .filter((song) => {
                 if (searchInput === "") {

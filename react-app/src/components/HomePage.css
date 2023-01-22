@@ -96,7 +96,13 @@
   position: fixed; 
   top: 0px; 
   z-index: 1; 
+  
 }
+
+.logo{
+  cursor: pointer;
+}
+
 
 .nav-top-innerdiv {
   display: flex; 
@@ -191,3 +197,78 @@
   padding-left:30px;
 
 }
+
+/*-------- demo btn -------*/
+.demo-btn{
+  border-radius: 20px;
+  padding:10px;
+  border-color: rgb(179,179,179);
+  background-color: transparent;
+  color:rgb(179,179,179)
+
+}
+.demo-btn:hover{
+  cursor: pointer;
+  border-color: white;
+  color:white
+
+}
+
+
+/*----------------- signup btn------------------ */
+
+.sign-up-btn{
+  text-decoration: none;
+  color:rgb(179,179,179)
+
+}
+.sign-up-btn:hover{
+  color:white
+}
+
+/*--------- login btn --------*/
+.login-btn{
+  border: solid 1px white;
+  padding:10px;
+  border-radius: 20px;
+  text-decoration: none;
+  color:black;
+  background-color: white;
+  transition: padding 0.2s;
+}
+
+.login-btn:hover{
+  padding:15px;
+
+}
+
+.css-b62m3t-container{
+    --fa-style-family-brands: "Font Awesome 6 Brands";
+    --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+    --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
+    --fa-style-family-classic: "Font Awesome 6 Free";
+    --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
+    color: black;
+    font-family: Gotham;
+    position: relative;
+    box-sizing: border-box;
+  }
+   .css-qbdosj-Input{
+    --fa-style-family-brands: "Font Awesome 6 Brands";
+    --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+    --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
+    --fa-style-family-classic: "Font Awesome 6 Free";
+    --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
+    font-family: Gotham;
+    cursor: default;
+    visibility: visible;
+    flex: 1 1 auto;
+    display: inline-grid;
+    grid-area: 1/1/2/3;
+    grid-template-columns: 0 min-content;
+    margin: 2px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    color: black;
+    box-sizing: border-box;
+   }
