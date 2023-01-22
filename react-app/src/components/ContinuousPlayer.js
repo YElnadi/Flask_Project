@@ -2,6 +2,7 @@ import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import "./HomePage.css";
 
 const Player = () => {
   const queue = useSelector((state) => state.songs.queue);
@@ -32,10 +33,12 @@ const Player = () => {
     );
   } else {
     return (
-      <AudioPlayer
-        src={""}
-        // Try other props!
-      />
+      <div className="audio-player">
+        <AudioPlayer
+          src={""}
+          // Try other props!
+        />
+      </div>
     );
   }
 };

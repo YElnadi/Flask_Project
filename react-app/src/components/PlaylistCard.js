@@ -23,10 +23,10 @@ const PlaylistCard = ({
 
   return (
     <>
-      <div className="card-container">
+      <div className="playlist-card-container">
         <div className="image-container">
           <img
-            style={{ width: 200, height: 200 }}
+            style={{ width: 150, height: 150 }}
             src={image_url}
             onClick={openPlayListCard}
           ></img>

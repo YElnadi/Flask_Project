@@ -18,6 +18,7 @@ import SinglePlaylistDetails from "./components/SinglePlaylistDetails";
 import CreatePlaylist from "./components/CreatePlaylist";
 import Search from "./components/search/search";
 import Player from "./components/ContinuousPlayer";
+import "./App.css";
 import EditPlaylistForm from "./components/EditPlaylistForm";
 
 function App() {

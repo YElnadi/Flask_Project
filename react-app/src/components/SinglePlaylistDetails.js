@@ -5,6 +5,9 @@ import { getOnePlaylistThunk, deletePlaylistThunk } from "../store/playlists";
 import PlayThisButton from "./PlayThisButton";
 // import EditPlaylistModal from "./EditPlayListModal";
 // import EditPlaylistForm from "./EditPlaylistForm";
+import CreateAlbum from "./CreateAlbum";
+import CreatePlaylist from "./CreatePlaylist";
+import "./HomePage.css";
 
 const SinglePlaylistDetails = () => {
   const { playlistId } = useParams();
@@ -29,42 +32,75 @@ const SinglePlaylistDetails = () => {
 
   return (
     <>
-      <p>Your are in playlist</p>
+      {/* <p>Your are in playlist</p> */}
       {/* <button className="edit-playlist" onClick={submit}>Edit Playlist</button> */}
-      <div>
+      {/* <div>
         <img
           src={playlist.playlist_img_url}
           style={{ width: 200, height: 200 }}
         />
-      </div>
+      </div> */}
 
-      <div>
-        {user && playlist && user.id === playlist.user_id && (
-          <button className="delete-playlist" onClick={deletePlaylist}>
-            Delete
-          </button>
-        )}
-      </div>
+      <div className="detail-page">
+        {/* <div className="side-nav-bar">
+          <p>
+            <NavLink to="/" exact={true} activeClassName="active">
+              Home
+            </NavLink>
+          </p>
+          <p>
+            <NavLink to="/search" exact={true} activeClassName="active">
+              Search
+            </NavLink>
+          </p>
+          <p>{user && <CreatePlaylist />}</p>
+          <p>{user && <CreateAlbum />}</p>
+        </div> */}
 
-      {/* <button style={{ width: 50 }} onClick={deletePlaylist}>
-        delete
-      </button> */}
+        <div className="playlist-page-detail">
+          <h1>Your are in playlist</h1>
+          {/* <button className="edit-playlist" onClick={submit}>Edit Playlist</button> */}
+          <div>
+            {/* <EditPlaylistForm /> */}
+            <img
+              src={playlist.playlist_img_url}
+              style={{ width: 200, height: 200 }}
+            />
+          </div>
 
-      <div>
-        <PlayThisButton id={playlist.id} isPlaylist={true} />
-        <p>{playlist.title}</p>
+          <div>
+            {user && playlist && user.id === playlist.user_id && (
+              <button className="delete-playlist" onClick={deletePlaylist}>
+                Delete
+              </button>
+            )}
+          </div>
+
+          <div>
+            <PlayThisButton id={playlist.id} isPlaylist={true} />
+
+            {/* <button style={{ width: 50 }} onClick={deletePlaylist}>
+          delete
+        </button> */}
+
+            <div>
+              <p>{playlist.title}</p>
+            </div>
+            <div>
+              <p>{playlist.description}</p>
+            </div>
+            <div>
+              <p>{getSongs(playlist).length} songs</p>
+            </div>
+            <div style={{ whiteSpace: "pre-line" }}>
+              {getSongs(playlist)
+                .map((song) => song.title)
+                .join("\n")}
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <p>{playlist.description}</p>
-      </div>
-      <div>
-        <p>number of songs: {getSongs(playlist).length}</p>
-      </div>
-      <div style={{ whiteSpace: "pre-line" }}>
-        {getSongs(playlist)
-          .map((song) => song.title)
-          .join("\n")}
-      </div>
+      <div style={{ padding: 50 }}>sdfk</div>
     </>
   );
 };

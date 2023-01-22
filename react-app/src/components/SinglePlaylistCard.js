@@ -15,8 +15,10 @@ const SinglePlaylistCard = ({ playlist }) => {
     );
   };
   return (
-    <div>
-      <div style={{ display: "flex" }}>
+    // <div>
+    // <div style={{ display: "flex" }}>
+    <div className="single-card-container">
+      <div className="image-container">
         <img
           style={{ width: 200, height: 200 }}
           src={playlist.playlist_img_url}
@@ -29,6 +31,7 @@ const SinglePlaylistCard = ({ playlist }) => {
 
       <div>by {playlist.user} </div>
     </div>
+    // </div>
   );
 };
 

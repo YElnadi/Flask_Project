@@ -18,7 +18,7 @@ const AlbumCard = ({
 
   return (
     <>
-      <div className="card-container">
+      <div className="single-card-container">
         <div className="image-container">
           <img
             style={{ width: 200, height: 200 }}

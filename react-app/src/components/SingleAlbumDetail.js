@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getOneAlbumThunk } from "../store/albums";
 import { deleteAlbumThunk } from "../store/albums";
@@ -7,6 +7,9 @@ import SongDeleteButton from "./SongDeleteButton";
 import EditSongForm from "./EditSongForm";
 import AddSongToPlaylistButton from "./AddSongToPlaylistButton";
 import PlayThisButton from "./PlayThisButton";
+import CreateAlbum from "./CreateAlbum";
+import CreatePlaylist from "./CreatePlaylist";
+import "./HomePage.css";
 
 const SingleAlbumDetail = () => {
   const { albumId } = useParams();
@@ -31,9 +34,24 @@ const SingleAlbumDetail = () => {
   }, [dispatch, albumId]);
 
   return (
-    <>
+    <div className="detail-page">
+      <div className="side-nav-bar">
+        <p>
+          <NavLink to="/" exact={true} activeClassName="active">
+            Home
+          </NavLink>
+        </p>
+        <p>
+          <NavLink to="/search" exact={true} activeClassName="active">
+            Search
+          </NavLink>
+        </p>
+        <p>{user && <CreatePlaylist />}</p>
+        <p>{user && <CreateAlbum />}</p>
+      </div>
+
       {Object.values(album).length && (
-        <>
+        <div className="album-page-detail">
           <h1>You are in the album</h1>
           <div>
             <img
@@ -80,9 +98,9 @@ const SingleAlbumDetail = () => {
               Add song
             </button>
           )}
-        </>
+        </div>
       )}
-    </>
+    </div>
   );
 };
 
