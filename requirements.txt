@@ -7,6 +7,7 @@
 
 -i https://pypi.org/simple
 alembic==1.6.5
+boto3==1.26.50
 click==7.1.2
 flask-cors==3.0.8
 flask-login==0.5.0

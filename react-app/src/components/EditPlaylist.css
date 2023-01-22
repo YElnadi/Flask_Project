@@ -1,0 +1,53 @@
+.edit-image-container > input{
+  display: none;
+}
+.edit-image-container{
+  /* border-radius: 20px; */
+  /* border: 1px solid white; */
+  margin-right: 20px;
+  box-shadow: 5px 5px 12px 5px black;
+}
+.edit-project-container{
+  /* border: 1px solid white; */
+  border-radius: 20px;
+  background-color: #282828;
+  padding-bottom: 25px;
+  width: 500px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 400px;
+}
+.edit-project-componenets{
+  display: flex;
+  flex-direction: row;
+}
+.name-description-container{
+  display: flex;
+  flex-direction: column;
+}
+.name-description-container > input {
+  color: white;
+  width: 100%;
+  height: 30px;
+  background-color: #3e3e3e;
+}
+#description-textarea{
+  width: 100%;
+  height: 100px;
+  background-color: #3e3e3e;
+  color: white;
+}
+#submit-edit-button-div{
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+#submit-edit-button{
+  background-color: white;
+  font-weight: 780;
+  border: 1px solid black;
+  border-radius: 25px;
+  height: 50px;
+  width: 100px;
+}

@@ -25,9 +25,10 @@ python-dateutil = "==2.8.1"
 python-editor = "==1.0.4"
 greenlet = "==1.1.0"
 Mako = "==1.1.4"
+boto3 = "==1.26.50"
+react-h5-audio-player = "==3.8.6"
 
 [dev-packages]
-
 
 [requires]
 python_version = "3.9"

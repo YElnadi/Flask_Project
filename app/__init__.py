@@ -4,9 +4,15 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
+
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+from .api.image_routes import image_routes
+from .api.song_routes import song_routes
+from .api.album_routes import album_routes
+from .api.playlist_routes import playlist_routes
+
 from .seeds import seed_commands
 from .config import Config
 
@@ -28,6 +34,10 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(image_routes, url_prefix='/api/images')
+app.register_blueprint(song_routes, url_prefix='/api/songs')
+app.register_blueprint(album_routes, url_prefix='/api/albums')
+app.register_blueprint(playlist_routes, url_prefix='/api/playlists')
 db.init_app(app)
 Migrate(app, db)
 
