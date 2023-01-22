@@ -235,8 +235,27 @@
 
 /*--------audio player background color ------*/
 .rhap_main{
-  background-color: black;
+  --fa-style-family-brands: "Font Awesome 6 Brands";
+  --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+  --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
+  --fa-style-family-classic: "Font Awesome 6 Free";
+  --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
+  color: black;
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  font-family: inherit;
+  width: 100%;
+  padding: 10px 15px;
+  background-color:black;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
 }
+/* .rhap_container{
+  border-color: black;
+} */
+
+
 
 
 /*--------delete btn ------*/
