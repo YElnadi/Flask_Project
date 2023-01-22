@@ -63,11 +63,12 @@ const SignUpForm = () => {
         <div>
           <label>Email</label>
           <input
-            type='text'
+            type='email'
             name='email'
             onChange={updateEmail}
             value={email}
             required={true}
+            
             ></input>
         </div>
         <div>
