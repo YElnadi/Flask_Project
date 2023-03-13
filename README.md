@@ -47,7 +47,7 @@ This is the starter for the Flask React project.
 ## MVP List
 
 Spotify8, a Spotify clone, is a website for users to share and listen to music, create playlists, and search for songs, albums, artists, and playlists.<p>
-Live site: [Spotify8](https://spotify8-clone-941w.onrender.com/)<p>
+Live site: [Spotify8](https://melody-on-spot.onrender.com/)<p>
 
 
 ## 1. New account creation, log in, log out, and guest/demo login
